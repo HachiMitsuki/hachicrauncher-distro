@@ -12,7 +12,7 @@
             "name": "NeoForge鯖",
             "description": "NeoForge 21.1.233 / MC 1.21.1",
             "icon": "",
-            "version": "2.0.10",
+            "version": "2.0.11",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1059,10 +1059,10 @@
                     "name": "Shared options (resourcepacks + keybinds)",
                     "type": "File",
                     "artifact": {
-                        "size": 5634,
-                        "MD5": "a049bc6be103b4ebb471020b8507f68a",
+                        "size": 5635,
+                        "MD5": "5967539088a4a25b3d79921b58038b4c",
                         "path": "hachicrauncher-shared-options.txt",
-                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/shared-options-a049bc6b.txt"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/shared-options-59675390.txt"
                     }
                 }
             ]
