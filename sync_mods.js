@@ -40,11 +40,15 @@ async function main(){
     const isOpt = m => (m.artifact.path||'') === 'hachicrauncher-shared-options.txt'
     const existing = {}; for(const m of allFile) if(!isRP(m) && !isOpt(m)) existing[(m.artifact.path||'').replace('mods/','')] = m
 
-    // ---- MOD ----
-    const fileMods = []; let added = 0
+    // ---- MOD (内容ハッシュで差分検知: 同名のまま中身が変わった更新も拾う) ----
+    const vname = (fn, h) => { const d = fn.lastIndexOf('.'); const base = d<0?fn:fn.slice(0,d), ext = d<0?'':fn.slice(d); return `${base}-${h.slice(0,8)}${ext}` }
+    const fileMods = []; let added = 0, changed = 0
     for(const fn of jars){
-        if(existing[fn]){ fileMods.push(existing[fn]); continue }   // 既に配信中 → そのまま
-        const a = byFile[fn] || {}; let url = a.url, name = fn
+        const localBuf = fs.readFileSync(path.join(modsDir, fn))
+        const localHash = md5(localBuf)
+        const cur = existing[fn]
+        if(cur && cur.artifact.MD5 === localHash){ fileMods.push(cur); continue }   // 同一 → 据置
+        const a = byFile[fn] || {}; let url = a.url, name = fn, buf = null
         if(a.dist===false){   // CF再配布不可 → Modrinth から取得
             try{
                 const slug = SLUG[a.name] || fn.toLowerCase().replace(/-(neoforge|fabric|forge|mc).*/,'').replace(/[^a-z0-9]+/g,'-')
@@ -53,11 +57,16 @@ async function main(){
                 url = f.url; name = url.split('/').pop()
             }catch(e){ console.log('SKIP(modrinth)', fn, e.message); continue }
         }
-        let buf
-        if(url){ buf = await dl(url) }                              // CF/Modrinth 参照
-        else { buf = fs.readFileSync(path.join(modsDir,fn)); url = await uploadAsset(fn, buf); console.log('  ↳ Release asset へアップロード（git非コミット）') }  // 手動MOD → GitHub Release assets
+        if(url){
+            buf = await dl(url)                                     // CF/Modrinth 参照
+            if(md5(buf) !== localHash){                             // CDN内容がローカルと不一致 → ローカルを忠実配信
+                buf = localBuf; url = await uploadAsset(vname(fn, localHash), localBuf); name = fn
+            }
+        } else {                                                   // 手動MOD → GitHub Release assets
+            buf = localBuf; url = await uploadAsset(vname(fn, localHash), localBuf)
+        }
         fileMods.push({ id:`mod:${fn.replace(/[^a-z0-9]/gi,'_')}`, name:a.name||name, type:'File', artifact:{ size:buf.length, MD5:md5(buf), path:`mods/${name}`, url } })
-        console.log('+ ' + name); added++
+        console.log((cur?'~':'+') + ' ' + name); cur ? changed++ : added++
     }
     let removed = 0
     for(const k of Object.keys(existing)) if(!jars.includes(k)){ console.log('- ' + k); removed++ }
@@ -95,15 +104,15 @@ async function main(){
         }
     }
 
-    if(added+removed+rpAdded+rpChanged+rpRemoved+(optChanged?1:0) === 0){ console.log('変更なし。'); return }
+    if(added+changed+removed+rpAdded+rpChanged+rpRemoved+(optChanged?1:0) === 0){ console.log('変更なし。'); return }
 
     srv.modules = [...nonFile, ...fileMods, ...rpMods, ...(sharedModule ? [sharedModule] : [])]
     const p = (srv.version||'2.0.0').split('.'); p[2] = String(Number(p[2]||0)+1); srv.version = p.join('.')
     fs.writeFileSync(distPath, JSON.stringify(dist,null,4))
-    console.log(`MOD ${fileMods.length}(+${added} -${removed}) | RP ${rpMods.length}(+${rpAdded} ~${rpChanged} -${rpRemoved}) | options ${optChanged?'更新':'据置'} | v${srv.version}`)
+    console.log(`MOD ${fileMods.length}(+${added} ~${changed} -${removed}) | RP ${rpMods.length}(+${rpAdded} ~${rpChanged} -${rpRemoved}) | options ${optChanged?'更新':'据置'} | v${srv.version}`)
 
     cp.execSync('git add -A', { cwd: DISTRO })
-    cp.execSync(`git commit -m "sync m+${added}/-${removed} rp+${rpAdded}/~${rpChanged}/-${rpRemoved} opt:${optChanged} v${srv.version}"`, { cwd: DISTRO, stdio: 'inherit' })
+    cp.execSync(`git commit -m "sync m+${added}/~${changed}/-${removed} rp+${rpAdded}/~${rpChanged}/-${rpRemoved} opt:${optChanged} v${srv.version}"`, { cwd: DISTRO, stdio: 'inherit' })
     cp.execSync('git push origin main', { cwd: DISTRO, stdio: 'inherit' })
     console.log('✅ pushed. プレイヤーは HachiCrauncher 再起動で同期される。')
 }

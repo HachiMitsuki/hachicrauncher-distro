@@ -12,7 +12,7 @@
             "name": "NeoForge鯖",
             "description": "NeoForge 21.1.233 / MC 1.21.1",
             "icon": "",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -576,9 +576,9 @@
                     "type": "File",
                     "artifact": {
                         "size": 574146,
-                        "MD5": "cb6419355f109bc6ed93dcc5f58d036d",
+                        "MD5": "0b54ad19211e532c70b0fb2ba99c021f",
                         "path": "mods/azurelibarmor-neo-1.21.1-3.1.3.jar",
-                        "url": "https://edge.forgecdn.net/files/7797/728/azurelibarmor-neo-1.21.1-3.1.3.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/azurelibarmor-neo-1.21.1-3.1.3-0b54ad19.jar"
                     }
                 },
                 {
@@ -597,10 +597,10 @@
                     "name": "Cloth Config API (Fabric/Forge/NeoForge)",
                     "type": "File",
                     "artifact": {
-                        "size": 1163890,
-                        "MD5": "4c3757160403fcccb8ad468c2ea22862",
+                        "size": 1151890,
+                        "MD5": "736374ee8a6a798b7df4596bc2b42a7a",
                         "path": "mods/cloth-config-15.0.140-neoforge.jar",
-                        "url": "https://edge.forgecdn.net/files/5729/127/cloth-config-15.0.140-neoforge.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/cloth-config-15.0.140-neoforge-736374ee.jar"
                     }
                 },
                 {
@@ -620,9 +620,9 @@
                     "type": "File",
                     "artifact": {
                         "size": 11842679,
-                        "MD5": "8c803078cb52411a40201d6e69a23529",
+                        "MD5": "79380e32e042762de432d092a6f313d5",
                         "path": "mods/DungeonsArise-1.21.1-2.1.68-release.jar",
-                        "url": "https://edge.forgecdn.net/files/7150/870/DungeonsArise-1.21.1-2.1.68-release.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/DungeonsArise-1.21.1-2.1.68-release-79380e32.jar"
                     }
                 },
                 {
@@ -664,9 +664,9 @@
                     "type": "File",
                     "artifact": {
                         "size": 8578288,
-                        "MD5": "b4d1d7e4c195fca39ce3a83690cdb147",
+                        "MD5": "ea68f664251f217da9977b0f7f97cb88",
                         "path": "mods/epic-fight-21.17.3.1-mc1.21.1-neoforge.jar",
-                        "url": "https://edge.forgecdn.net/files/8175/609/epic-fight-21.17.3.1-mc1.21.1-neoforge.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/epic-fight-21.17.3.1-mc1.21.1-neoforge-ea68f664.jar"
                     }
                 },
                 {
@@ -883,10 +883,10 @@
                     "name": "playerAnimator",
                     "type": "File",
                     "artifact": {
-                        "size": 203149,
-                        "MD5": "ecb81c9479605db12a77bea774b88406",
+                        "size": 200541,
+                        "MD5": "82bcca26c17e9193cb372717060d7a81",
                         "path": "mods/player-animation-lib-forge-2.0.4+1.21.1.jar",
-                        "url": "https://edge.forgecdn.net/files/7389/814/player-animation-lib-forge-2.0.4%2b1.21.1.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/player-animation-lib-forge-2.0.4%2B1.21.1-82bcca26.jar"
                     }
                 },
                 {
@@ -895,9 +895,9 @@
                     "type": "File",
                     "artifact": {
                         "size": 52976,
-                        "MD5": "853c0e629c6f2b82dcaaae5a6facd8f4",
+                        "MD5": "0d641f298ac10657e3914706e3866660",
                         "path": "mods/pufferfish_unofficial_additions-1.21.1-2.2.8.jar",
-                        "url": "https://edge.forgecdn.net/files/7389/968/pufferfish_unofficial_additions-1.21.1-2.2.8.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/pufferfish_unofficial_additions-1.21.1-2.2.8-0d641f29.jar"
                     }
                 },
                 {
@@ -905,21 +905,21 @@
                     "name": "Pufferfish's Attributes [Fabric & Forge & NeoForge]",
                     "type": "File",
                     "artifact": {
-                        "size": 235521,
-                        "MD5": "754d40752af27e5ea2f999c2da7a621e",
+                        "size": 234385,
+                        "MD5": "253d61ddcbf9f50b7377f0abddcec3d5",
                         "path": "mods/puffish_attributes-0.8.2-1.21-neoforge.jar",
-                        "url": "https://edge.forgecdn.net/files/7551/339/puffish_attributes-0.8.2-1.21-neoforge.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_attributes-0.8.2-1.21-neoforge-253d61dd.jar"
                     }
                 },
                 {
-                    "id": "mod:835091:8181011",
+                    "id": "mod:puffish_skills_0_18_0_1_21_neoforge_jar",
                     "name": "Pufferfish's Skills [Fabric & Forge & NeoForge]",
                     "type": "File",
                     "artifact": {
-                        "size": 614216,
-                        "MD5": "52b1fbac1a87f50f54baea50ad483161",
+                        "size": 607671,
+                        "MD5": "c216a1c5f98675ae7efdee44fdef5cbd",
                         "path": "mods/puffish_skills-0.18.0-1.21-neoforge.jar",
-                        "url": "https://edge.forgecdn.net/files/8181/11/puffish_skills-0.18.0-1.21-neoforge.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_skills-0.18.0-1.21-neoforge-c216a1c5.jar"
                     }
                 },
                 {
@@ -1016,9 +1016,9 @@
                     "type": "File",
                     "artifact": {
                         "size": 388678,
-                        "MD5": "4a27558e0a2fd72512b051525c9abeaf",
+                        "MD5": "a143ee4f008065aae1df4b205213801b",
                         "path": "mods/YungsApi-1.21.1-NeoForge-5.1.6.jar",
-                        "url": "https://edge.forgecdn.net/files/6715/463/YungsApi-1.21.1-NeoForge-5.1.6.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/YungsApi-1.21.1-NeoForge-5.1.6-a143ee4f.jar"
                     }
                 },
                 {
@@ -1027,9 +1027,9 @@
                     "type": "File",
                     "artifact": {
                         "size": 782160,
-                        "MD5": "91ab689aec35d6929682c147be2d57ed",
+                        "MD5": "6426fe5ff921920eb16f4ada4d4ea948",
                         "path": "mods/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
-                        "url": "https://edge.forgecdn.net/files/5954/804/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/YungsBetterDungeons-1.21.1-NeoForge-5.1.4-6426fe5f.jar"
                     }
                 },
                 {
