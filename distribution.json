@@ -12,7 +12,7 @@
             "name": "NeoForge鯖",
             "description": "NeoForge 21.1.233 / MC 1.21.1",
             "icon": "",
-            "version": "2.0.14",
+            "version": "2.0.15",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -560,6 +560,28 @@
                     ]
                 },
                 {
+                    "id": "mod:ars_nouveau_1_21_1_5_10_2_jar",
+                    "name": "Ars Nouveau",
+                    "type": "File",
+                    "artifact": {
+                        "size": 20235084,
+                        "MD5": "37fb0f2dc34781b5fbdd60e70098d6eb",
+                        "path": "mods/ars_nouveau-1.21.1-5.10.2.jar",
+                        "url": "https://edge.forgecdn.net/files/6770/346/ars_nouveau-1.21.1-5.10.2.jar"
+                    }
+                },
+                {
+                    "id": "mod:azurelibarmor_neo_1_21_1_3_1_3_jar",
+                    "name": "azurelibarmor-neo-1.21.1-3.1.3.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 574146,
+                        "MD5": "0b54ad19211e532c70b0fb2ba99c021f",
+                        "path": "mods/azurelibarmor-neo-1.21.1-3.1.3.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/azurelibarmor-neo-1.21.1-3.1.3-0b54ad19.jar"
+                    }
+                },
+                {
                     "id": "mod:949555:7338300",
                     "name": "BadOptimizations",
                     "type": "File",
@@ -568,6 +590,39 @@
                         "MD5": "59ee243a5ccd09fff1dd2879b3cad72a",
                         "path": "mods/BadOptimizations-2.4.1-1.21.1.jar",
                         "url": "https://edge.forgecdn.net/files/7338/300/BadOptimizations-2.4.1-1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:cloth_config_15_0_140_neoforge_jar",
+                    "name": "cloth-config-15.0.140-neoforge.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1151890,
+                        "MD5": "736374ee8a6a798b7df4596bc2b42a7a",
+                        "path": "mods/cloth-config-15.0.140-neoforge.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/cloth-config-15.0.140-neoforge-736374ee.jar"
+                    }
+                },
+                {
+                    "id": "mod:curios_neoforge_9_5_1_1_21_1_jar",
+                    "name": "curios-neoforge-9.5.1+1.21.1.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 410690,
+                        "MD5": "bd6fad3883c3ce540a256a462d7769db",
+                        "path": "mods/curios-neoforge-9.5.1+1.21.1.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/curios-neoforge-9.5.1%2B1.21.1-bd6fad38.jar"
+                    }
+                },
+                {
+                    "id": "mod:DungeonsArise_1_21_1_2_1_68_release_jar",
+                    "name": "DungeonsArise-1.21.1-2.1.68-release.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 11842679,
+                        "MD5": "79380e32e042762de432d092a6f313d5",
+                        "path": "mods/DungeonsArise-1.21.1-2.1.68-release.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/DungeonsArise-1.21.1-2.1.68-release-79380e32.jar"
                     }
                 },
                 {
@@ -604,6 +659,17 @@
                     }
                 },
                 {
+                    "id": "mod:epic_fight_21_17_3_1_mc1_21_1_neoforge_jar",
+                    "name": "epic-fight-21.17.3.1-mc1.21.1-neoforge.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 8578288,
+                        "MD5": "ea68f664251f217da9977b0f7f97cb88",
+                        "path": "mods/epic-fight-21.17.3.1-mc1.21.1-neoforge.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/epic-fight-21.17.3.1-mc1.21.1-neoforge-ea68f664.jar"
+                    }
+                },
+                {
                     "id": "mod:299540:6751551",
                     "name": "FastFurnace",
                     "type": "File",
@@ -634,6 +700,28 @@
                         "MD5": "e0374dac41d6c641903f9e241911e1d3",
                         "path": "mods/ferritecore-7.0.3-neoforge.jar",
                         "url": "https://edge.forgecdn.net/files/7524/151/ferritecore-7.0.3-neoforge.jar"
+                    }
+                },
+                {
+                    "id": "mod:forbidden_arcanus_2_6_1_jar",
+                    "name": "forbidden_arcanus-2.6.1.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 3402083,
+                        "MD5": "41c113048e6700c33c946cd35380308b",
+                        "path": "mods/forbidden_arcanus-2.6.1.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/forbidden_arcanus-2.6.1-41c11304.jar"
+                    }
+                },
+                {
+                    "id": "mod:geckolib_neoforge_1_21_1_4_8_4_jar",
+                    "name": "geckolib-neoforge-1.21.1-4.8.4.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 622582,
+                        "MD5": "99582aaba3946c7c8df46abac77bb280",
+                        "path": "mods/geckolib-neoforge-1.21.1-4.8.4.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/geckolib-neoforge-1.21.1-4.8.4-99582aab.jar"
                     }
                 },
                 {
@@ -681,6 +769,61 @@
                     }
                 },
                 {
+                    "id": "mod:lionfishapi_2_8_jar",
+                    "name": "Lionfish API",
+                    "type": "File",
+                    "artifact": {
+                        "size": 141562,
+                        "MD5": "ec05da3eee4f72d506af29b42dacfeb5",
+                        "path": "mods/lionfishapi-2.8.jar",
+                        "url": "https://edge.forgecdn.net/files/8094/527/lionfishapi-2.8.jar"
+                    }
+                },
+                {
+                    "id": "mod:lodestone_1_21_1_1_7_1_jar",
+                    "name": "Lodestone",
+                    "type": "File",
+                    "artifact": {
+                        "size": 675765,
+                        "MD5": "cfd7b73e325eda4f50ffa9c4dd08d8dc",
+                        "path": "mods/lodestone-1.21.1-1.7.1.jar",
+                        "url": "https://edge.forgecdn.net/files/6630/47/lodestone-1.21.1-1.7.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:L_Enders_Cataclysm_1_21_1_3_27_jar",
+                    "name": "L_Enders-Cataclysm-1.21.1-3.27.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 73346519,
+                        "MD5": "82117c1f2501f79e8ba3b23ab5675278",
+                        "path": "mods/L_Enders-Cataclysm-1.21.1-3.27.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/L_Enders-Cataclysm-1.21.1-3.27-82117c1f.jar"
+                    }
+                },
+                {
+                    "id": "mod:mahoutsukai_1_21_1_v1_36_8_jar",
+                    "name": "mahoutsukai-1.21.1-v1.36.8.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 5026005,
+                        "MD5": "3e4802e4c5ed8656a8e547b382dff2e2",
+                        "path": "mods/mahoutsukai-1.21.1-v1.36.8.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/mahoutsukai-1.21.1-v1.36.8-3e4802e4.jar"
+                    }
+                },
+                {
+                    "id": "mod:malum_1_21_1_1_7_3_1_jar",
+                    "name": "Malum",
+                    "type": "File",
+                    "artifact": {
+                        "size": 30769743,
+                        "MD5": "5e0672f4aa8de366a2d424cce8584572",
+                        "path": "mods/malum-1.21.1-1.7.3.1.jar",
+                        "url": "https://edge.forgecdn.net/files/6655/805/malum-1.21.1-1.7.3.1.jar"
+                    }
+                },
+                {
                     "id": "mod:790626:8141551",
                     "name": "ModernFix",
                     "type": "File",
@@ -689,6 +832,28 @@
                         "MD5": "fee4cdc10341ae1162f81bdce784cdd7",
                         "path": "mods/modernfix-neoforge-5.27.11+mc1.21.1.jar",
                         "url": "https://edge.forgecdn.net/files/8141/551/modernfix-neoforge-5.27.11%2bmc1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:modonomicon_1_21_1_neoforge_1_120_1_jar",
+                    "name": "modonomicon-1.21.1-neoforge-1.120.1.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 2403998,
+                        "MD5": "8f68e85129273a05609aa36afc3a39e2",
+                        "path": "mods/modonomicon-1.21.1-neoforge-1.120.1.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/modonomicon-1.21.1-neoforge-1.120.1-8f68e851.jar"
+                    }
+                },
+                {
+                    "id": "mod:occultism_1_21_1_neoforge_1_220_0_jar",
+                    "name": "occultism-1.21.1-neoforge-1.220.0.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 6946264,
+                        "MD5": "5660b83a2b858ada0b3129fd98b020f9",
+                        "path": "mods/occultism-1.21.1-neoforge-1.220.0.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/occultism-1.21.1-neoforge-1.220.0-5660b83a.jar"
                     }
                 },
                 {
@@ -714,6 +879,50 @@
                     }
                 },
                 {
+                    "id": "mod:player_animation_lib_forge_2_0_4_1_21_1_jar",
+                    "name": "player-animation-lib-forge-2.0.4+1.21.1.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 200541,
+                        "MD5": "82bcca26c17e9193cb372717060d7a81",
+                        "path": "mods/player-animation-lib-forge-2.0.4+1.21.1.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/player-animation-lib-forge-2.0.4%2B1.21.1-82bcca26.jar"
+                    }
+                },
+                {
+                    "id": "mod:pufferfish_unofficial_additions_1_21_1_2_2_8_jar",
+                    "name": "pufferfish_unofficial_additions-1.21.1-2.2.8.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 52976,
+                        "MD5": "0d641f298ac10657e3914706e3866660",
+                        "path": "mods/pufferfish_unofficial_additions-1.21.1-2.2.8.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/pufferfish_unofficial_additions-1.21.1-2.2.8-0d641f29.jar"
+                    }
+                },
+                {
+                    "id": "mod:puffish_attributes_0_8_2_1_21_neoforge_jar",
+                    "name": "puffish_attributes-0.8.2-1.21-neoforge.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 234385,
+                        "MD5": "253d61ddcbf9f50b7377f0abddcec3d5",
+                        "path": "mods/puffish_attributes-0.8.2-1.21-neoforge.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_attributes-0.8.2-1.21-neoforge-253d61dd.jar"
+                    }
+                },
+                {
+                    "id": "mod:puffish_skills_0_18_0_1_21_neoforge_jar",
+                    "name": "puffish_skills-0.18.0-1.21-neoforge.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 607671,
+                        "MD5": "c216a1c5f98675ae7efdee44fdef5cbd",
+                        "path": "mods/puffish_skills-0.18.0-1.21-neoforge.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_skills-0.18.0-1.21-neoforge-c216a1c5.jar"
+                    }
+                },
+                {
                     "id": "mod:495476:8168234",
                     "name": "Puzzles Lib",
                     "type": "File",
@@ -736,6 +945,39 @@
                     }
                 },
                 {
+                    "id": "mod:RPG_HUD_3_10_3_neoforge_1_21_1_jar",
+                    "name": "RPG-HUD-3.10.3-neoforge-1.21.1.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 220375,
+                        "MD5": "863c2e0b9ffe1098c44e4b86611b2e5b",
+                        "path": "mods/RPG-HUD-3.10.3-neoforge-1.21.1.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/RPG-HUD-3.10.3-neoforge-1.21.1-863c2e0b.jar"
+                    }
+                },
+                {
+                    "id": "mod:rpg_skill_tree_1_3_0_jar",
+                    "name": "rpg-skill-tree-1.3.0.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 389814,
+                        "MD5": "3271668e31255cc76b7b0b6f7edab6f6",
+                        "path": "mods/rpg-skill-tree-1.3.0.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/rpg-skill-tree-1.3.0-3271668e.jar"
+                    }
+                },
+                {
+                    "id": "mod:SmartBrainLib_neoforge_1_21_1_1_16_11_jar",
+                    "name": "SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 391053,
+                        "MD5": "ab527712e124e301565b95db4f0119d9",
+                        "path": "mods/SmartBrainLib-neoforge-1.21.1-1.16.11.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/SmartBrainLib-neoforge-1.21.1-1.16.11-ab527712.jar"
+                    }
+                },
+                {
                     "id": "mod:394468:6382651",
                     "name": "Sodium",
                     "type": "File",
@@ -747,6 +989,17 @@
                     }
                 },
                 {
+                    "id": "mod:valhelsia_core_neoforge_1_21_1_1_1_4_jar",
+                    "name": "valhelsia_core-neoforge-1.21.1-1.1.4.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 178468,
+                        "MD5": "e5f7b866af8346096bb9d8d2284cf058",
+                        "path": "mods/valhelsia_core-neoforge-1.21.1-1.1.4.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/valhelsia_core-neoforge-1.21.1-1.1.4-e5f7b866.jar"
+                    }
+                },
+                {
                     "id": "mod:voicechat_neoforge_1_21_1_2_6_18_jar",
                     "name": "voicechat-neoforge-1.21.1-2.6.18.jar",
                     "type": "File",
@@ -755,6 +1008,28 @@
                         "MD5": "b8560ea2d8f5c05a0d947dff55085d82",
                         "path": "mods/voicechat-neoforge-1.21.1-2.6.18.jar",
                         "url": "https://hachimitsuki.github.io/hachicrauncher-distro/repo/mods/voicechat-neoforge-1.21.1-2.6.18.jar"
+                    }
+                },
+                {
+                    "id": "mod:YungsApi_1_21_1_NeoForge_5_1_6_jar",
+                    "name": "YungsApi-1.21.1-NeoForge-5.1.6.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 388678,
+                        "MD5": "a143ee4f008065aae1df4b205213801b",
+                        "path": "mods/YungsApi-1.21.1-NeoForge-5.1.6.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/YungsApi-1.21.1-NeoForge-5.1.6-a143ee4f.jar"
+                    }
+                },
+                {
+                    "id": "mod:YungsBetterDungeons_1_21_1_NeoForge_5_1_4_jar",
+                    "name": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+                    "type": "File",
+                    "artifact": {
+                        "size": 782160,
+                        "MD5": "6426fe5ff921920eb16f4ada4d4ea948",
+                        "path": "mods/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/YungsBetterDungeons-1.21.1-NeoForge-5.1.4-6426fe5f.jar"
                     }
                 },
                 {
