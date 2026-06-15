@@ -12,7 +12,7 @@
             "name": "NeoForge鯖",
             "description": "NeoForge 21.1.233 / MC 1.21.1",
             "icon": "",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -597,10 +597,10 @@
                     "name": "cloth-config-15.0.140-neoforge.jar",
                     "type": "File",
                     "artifact": {
-                        "size": 1151890,
-                        "MD5": "736374ee8a6a798b7df4596bc2b42a7a",
+                        "size": 1137426,
+                        "MD5": "3ab40b6f68a5e3c7d214b9f5399b1d37",
                         "path": "mods/cloth-config-15.0.140-neoforge.jar",
-                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/cloth-config-15.0.140-neoforge-736374ee.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/cloth-config-15.0.140-neoforge-3ab40b6f.jar"
                     }
                 },
                 {
@@ -645,17 +645,6 @@
                         "MD5": "9fa5506559e35228267da6bc0546d1bf",
                         "path": "mods/easy_npc_config_ui-neoforge-1.21.1-6.17.0.jar",
                         "url": "https://edge.forgecdn.net/files/8207/87/easy_npc_config_ui-neoforge-1.21.1-6.17.0.jar"
-                    }
-                },
-                {
-                    "id": "mod:448233:8053771",
-                    "name": "Entity Culling Fabric/Forge",
-                    "type": "File",
-                    "artifact": {
-                        "size": 1582824,
-                        "MD5": "88831a176ed788b91d9c881a70a86902",
-                        "path": "mods/entityculling-neoforge-1.10.2-mc1.21.1.jar",
-                        "url": "https://cdn.modrinth.com/data/NNAgCjsB/versions/2tOn8XA2/entityculling-neoforge-1.10.2-mc1.21.1.jar"
                     }
                 },
                 {
@@ -733,17 +722,6 @@
                         "MD5": "5dcf573cb56e4a73170d6faade3a395e",
                         "path": "mods/HealthBars-v21.1.0-1.21.1-NeoForge.jar",
                         "url": "https://edge.forgecdn.net/files/7122/333/HealthBars-v21.1.0-1.21.1-NeoForge.jar"
-                    }
-                },
-                {
-                    "id": "mod:686911:7537795",
-                    "name": "ImmediatelyFast",
-                    "type": "File",
-                    "artifact": {
-                        "size": 368598,
-                        "MD5": "567bb6d9155070ad858740af12450c63",
-                        "path": "mods/ImmediatelyFast-NeoForge-1.6.10+1.21.1.jar",
-                        "url": "https://edge.forgecdn.net/files/7537/795/ImmediatelyFast-NeoForge-1.6.10%2b1.21.1.jar"
                     }
                 },
                 {
@@ -883,10 +861,10 @@
                     "name": "player-animation-lib-forge-2.0.4+1.21.1.jar",
                     "type": "File",
                     "artifact": {
-                        "size": 200541,
-                        "MD5": "82bcca26c17e9193cb372717060d7a81",
+                        "size": 195861,
+                        "MD5": "1c8cf59225fa23db7054512d407bbc97",
                         "path": "mods/player-animation-lib-forge-2.0.4+1.21.1.jar",
-                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/player-animation-lib-forge-2.0.4%2B1.21.1-82bcca26.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/player-animation-lib-forge-2.0.4%2B1.21.1-1c8cf592.jar"
                     }
                 },
                 {
@@ -905,10 +883,10 @@
                     "name": "puffish_attributes-0.8.2-1.21-neoforge.jar",
                     "type": "File",
                     "artifact": {
-                        "size": 234385,
-                        "MD5": "253d61ddcbf9f50b7377f0abddcec3d5",
+                        "size": 231795,
+                        "MD5": "7d2c4da2d51ce15b0f4a25cb40bdd80c",
                         "path": "mods/puffish_attributes-0.8.2-1.21-neoforge.jar",
-                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_attributes-0.8.2-1.21-neoforge-253d61dd.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_attributes-0.8.2-1.21-neoforge-7d2c4da2.jar"
                     }
                 },
                 {
@@ -916,10 +894,10 @@
                     "name": "puffish_skills-0.18.0-1.21-neoforge.jar",
                     "type": "File",
                     "artifact": {
-                        "size": 607671,
-                        "MD5": "c216a1c5f98675ae7efdee44fdef5cbd",
+                        "size": 600683,
+                        "MD5": "c457b477f9c55cb490220430cd397dcd",
                         "path": "mods/puffish_skills-0.18.0-1.21-neoforge.jar",
-                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_skills-0.18.0-1.21-neoforge-c216a1c5.jar"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/puffish_skills-0.18.0-1.21-neoforge-c457b477.jar"
                     }
                 },
                 {

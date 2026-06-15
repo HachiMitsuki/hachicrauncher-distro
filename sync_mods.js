@@ -23,6 +23,14 @@ const SLUG = { 'Entity Culling': 'entityculling', 'EntityCulling': 'entitycullin
 async function dl(u){ const r = await fetch(u,{headers:{'User-Agent':UA}}); if(!r.ok) throw new Error('DL '+r.status+' '+u); return Buffer.from(await r.arrayBuffer()) }
 async function getJson(u){ const r = await fetch(u,{headers:{'User-Agent':UA}}); if(!r.ok) throw new Error('JSON '+r.status); return r.json() }
 
+// STORED+data-descriptor の jar(JDKのJarInputStreamが弾く)を正規化。問題なければ原本のまま返す。
+function normalizeJar(buf){
+    try {
+        const out = cp.execSync('python normalize_jar.py', { cwd: DISTRO, input: buf, maxBuffer: 600*1024*1024 })
+        return (out && out.length) ? out : buf
+    } catch(e){ console.log('  (normalize skip:', String(e.message).slice(0,50), ')'); return buf }
+}
+
 async function main(){
     const modsDir = path.join(INST, 'mods')
     const jars = fs.readdirSync(modsDir).filter(x => x.toLowerCase().endsWith('.jar'))
@@ -44,7 +52,7 @@ async function main(){
     const vname = (fn, h) => { const d = fn.lastIndexOf('.'); const base = d<0?fn:fn.slice(0,d), ext = d<0?'':fn.slice(d); return `${base}-${h.slice(0,8)}${ext}` }
     const fileMods = []; let added = 0, changed = 0
     for(const fn of jars){
-        const localBuf = fs.readFileSync(path.join(modsDir, fn))
+        const localBuf = normalizeJar(fs.readFileSync(path.join(modsDir, fn)))
         const localHash = md5(localBuf)
         const cur = existing[fn]
         if(cur && cur.artifact.MD5 === localHash){ fileMods.push(cur); continue }   // 同一 → 据置
