@@ -112,15 +112,29 @@ async function main(){
         }
     }
 
-    if(added+changed+removed+rpAdded+rpChanged+rpRemoved+(optChanged?1:0) === 0){ console.log('変更なし。'); return }
+    // ---- 共有 config (config/ を決定的zipにバンドル, baseline適用・個人設定は除外) ----
+    let configModule = srv.modules.find(m => m.type==='File' && (m.artifact.path||'')==='hachicrauncher-shared-config.zip') || null
+    let cfgChanged = false
+    const cfgDir = path.join(INST, 'config')
+    if(fs.existsSync(cfgDir)){
+        const bundle = cp.execSync(`python build_config_bundle.py "${cfgDir}"`, { cwd: DISTRO, maxBuffer: 128*1024*1024 })
+        const hash = md5(bundle)
+        if(!configModule || configModule.artifact.MD5 !== hash){
+            const url = await uploadAsset(`shared-config-${hash.slice(0,8)}.zip`, bundle)
+            configModule = { id:'shared-config', name:'Shared mod configs', type:'File', artifact:{ size:bundle.length, MD5:hash, path:'hachicrauncher-shared-config.zip', url } }
+            console.log(`~CONFIG 更新 (${bundle.length} B)`); cfgChanged = true
+        }
+    }
 
-    srv.modules = [...nonFile, ...fileMods, ...rpMods, ...(sharedModule ? [sharedModule] : [])]
+    if(added+changed+removed+rpAdded+rpChanged+rpRemoved+(optChanged?1:0)+(cfgChanged?1:0) === 0){ console.log('変更なし。'); return }
+
+    srv.modules = [...nonFile, ...fileMods, ...rpMods, ...(sharedModule ? [sharedModule] : []), ...(configModule ? [configModule] : [])]
     const p = (srv.version||'2.0.0').split('.'); p[2] = String(Number(p[2]||0)+1); srv.version = p.join('.')
     fs.writeFileSync(distPath, JSON.stringify(dist,null,4))
-    console.log(`MOD ${fileMods.length}(+${added} ~${changed} -${removed}) | RP ${rpMods.length}(+${rpAdded} ~${rpChanged} -${rpRemoved}) | options ${optChanged?'更新':'据置'} | v${srv.version}`)
+    console.log(`MOD ${fileMods.length}(+${added} ~${changed} -${removed}) | RP ${rpMods.length}(+${rpAdded} ~${rpChanged} -${rpRemoved}) | options ${optChanged?'更新':'据置'} | config ${cfgChanged?'更新':'据置'} | v${srv.version}`)
 
     cp.execSync('git add -A', { cwd: DISTRO })
-    cp.execSync(`git commit -m "sync m+${added}/~${changed}/-${removed} rp+${rpAdded}/~${rpChanged}/-${rpRemoved} opt:${optChanged} v${srv.version}"`, { cwd: DISTRO, stdio: 'inherit' })
+    cp.execSync(`git commit -m "sync m+${added}/~${changed}/-${removed} rp+${rpAdded}/~${rpChanged}/-${rpRemoved} opt:${optChanged} cfg:${cfgChanged} v${srv.version}"`, { cwd: DISTRO, stdio: 'inherit' })
     cp.execSync('git push origin main', { cwd: DISTRO, stdio: 'inherit' })
     console.log('✅ pushed. プレイヤーは HachiCrauncher 再起動で同期される。')
 }
