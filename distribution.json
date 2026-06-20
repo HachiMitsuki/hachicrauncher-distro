@@ -12,7 +12,7 @@
             "name": "NeoForge鯖",
             "description": "NeoForge 21.1.233 / MC 1.21.1",
             "icon": "",
-            "version": "2.0.18",
+            "version": "2.0.19",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1015,10 +1015,10 @@
                     "name": "Shared mod configs",
                     "type": "File",
                     "artifact": {
-                        "size": 177695,
-                        "MD5": "41cb3da26ecdefe402120395f2710a40",
+                        "size": 177691,
+                        "MD5": "be5bb0f17753436945835b63e8dd5e83",
                         "path": "hachicrauncher-shared-config.zip",
-                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/shared-config-41cb3da2.zip"
+                        "url": "https://github.com/HachiMitsuki/hachicrauncher-distro/releases/download/mods-host/shared-config-be5bb0f1.zip"
                     }
                 }
             ]
