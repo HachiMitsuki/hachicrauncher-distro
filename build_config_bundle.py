@@ -10,7 +10,7 @@ DENY_EXACT = {
     "embeddium-options.json", "badoptimizations.txt",
     "entityculling.json", "immediatelyfast.json",
 }
-DENY_PREFIX = ("voicechat/",)
+DENY_PREFIX = ("voicechat/", "ars_nouveau/search_index/")  # 自動生成キャッシュ等は共有しない
 
 files = []
 for root, _, fnames in os.walk(CONFIG):
