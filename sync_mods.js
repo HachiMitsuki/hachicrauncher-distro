@@ -46,7 +46,7 @@ async function main(){
     const allFile = srv.modules.filter(m=>m.type==='File')
     const isRP  = m => (m.artifact.path||'').startsWith('resourcepacks/')
     const isOpt = m => (m.artifact.path||'') === 'hachicrauncher-shared-options.txt'
-    const existing = {}; for(const m of allFile) if(!isRP(m) && !isOpt(m)) existing[(m.artifact.path||'').replace('mods/','')] = m
+    const existing = {}; for(const m of allFile) if((m.artifact.path||'').startsWith('mods/')) existing[m.artifact.path.replace('mods/','')] = m
 
     // ---- MOD (内容ハッシュで差分検知: 同名のまま中身が変わった更新も拾う) ----
     const vname = (fn, h) => { const d = fn.lastIndexOf('.'); const base = d<0?fn:fn.slice(0,d), ext = d<0?'':fn.slice(d); return `${base}-${h.slice(0,8)}${ext}` }
