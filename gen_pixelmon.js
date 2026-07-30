@@ -107,7 +107,7 @@ async function main(){
     const dist=JSON.parse(fs.readFileSync(distPath,'utf8'))
     const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Pixelmon 9.3.16 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.0.0',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
-        mainServer:false, autoconnect:false, modules:[forgeHosted, ...modMods] }
+        mainServer:false, autoconnect:true, modules:[forgeHosted, ...modMods] }
     const i=dist.servers.findIndex(s=>s.id===CFG.SERVER_ID); if(i>=0) dist.servers[i]=entry; else dist.servers.push(entry)
     fs.writeFileSync(distPath, JSON.stringify(dist,null,4))
     console.log(`\n✅ done. libs:${libMods.length} game:${gameMods.length} mods:${modMods.length}`)

@@ -1037,7 +1037,7 @@
                 "largeImageKey": "hachi-pixelmon-1.21.1"
             },
             "mainServer": false,
-            "autoconnect": false,
+            "autoconnect": true,
             "modules": [
                 {
                     "id": "net.neoforged:neoforge:21.1.233",
