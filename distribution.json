@@ -1576,6 +1576,50 @@
                     ]
                 },
                 {
+                    "id": "mod:BadOptimizations_2_4_1_1_21_1_jar",
+                    "name": "BadOptimizations",
+                    "type": "File",
+                    "artifact": {
+                        "size": 283566,
+                        "MD5": "59ee243a5ccd09fff1dd2879b3cad72a",
+                        "path": "mods/BadOptimizations-2.4.1-1.21.1.jar",
+                        "url": "https://edge.forgecdn.net/files/7338/300/BadOptimizations-2.4.1-1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:ferritecore_7_0_3_neoforge_jar",
+                    "name": "FerriteCore",
+                    "type": "File",
+                    "artifact": {
+                        "size": 121559,
+                        "MD5": "e0374dac41d6c641903f9e241911e1d3",
+                        "path": "mods/ferritecore-7.0.3-neoforge.jar",
+                        "url": "https://edge.forgecdn.net/files/7524/151/ferritecore-7.0.3-neoforge.jar"
+                    }
+                },
+                {
+                    "id": "mod:iris_neoforge_1_8_12_mc1_21_1_jar",
+                    "name": "Iris Shaders",
+                    "type": "File",
+                    "artifact": {
+                        "size": 2438548,
+                        "MD5": "6c1122aa7c2b1a4f24831e394c5b513f",
+                        "path": "mods/iris-neoforge-1.8.12+mc1.21.1.jar",
+                        "url": "https://edge.forgecdn.net/files/6661/598/iris-neoforge-1.8.12%2bmc1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:modernfix_neoforge_5_27_20_mc1_21_1_jar",
+                    "name": "ModernFix",
+                    "type": "File",
+                    "artifact": {
+                        "size": 599474,
+                        "MD5": "b488341cd5172f6bb16b5ec6d0856c4d",
+                        "path": "mods/modernfix-neoforge-5.27.20+mc1.21.1.jar",
+                        "url": "https://cdn.modrinth.com/data/nmDcB62a/versions/VsJnrw8k/modernfix-neoforge-5.27.20%2Bmc1.21.1.jar"
+                    }
+                },
+                {
                     "id": "mod:Pixelmon_1_21_1_9_3_16_universal_jar",
                     "name": "Pixelmon",
                     "type": "File",
@@ -1584,6 +1628,39 @@
                         "MD5": "15468ffa609809caa282a3f9e9d6397f",
                         "path": "mods/Pixelmon-1.21.1-9.3.16-universal.jar",
                         "url": "https://cdn.modrinth.com/data/59ZceYlU/versions/LqFrsWa8/Pixelmon-1.21.1-9.3.16-universal.jar"
+                    }
+                },
+                {
+                    "id": "mod:Placebo_1_21_1_9_9_1_jar",
+                    "name": "Placebo",
+                    "type": "File",
+                    "artifact": {
+                        "size": 324056,
+                        "MD5": "cc725fc5406d3af893484cfbba06f6ed",
+                        "path": "mods/Placebo-1.21.1-9.9.1.jar",
+                        "url": "https://edge.forgecdn.net/files/6926/281/Placebo-1.21.1-9.9.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:sodium_neoforge_0_6_13_mc1_21_1_jar",
+                    "name": "Sodium",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1162994,
+                        "MD5": "e5018c782d851fea76be0205b7616e5d",
+                        "path": "mods/sodium-neoforge-0.6.13+mc1.21.1.jar",
+                        "url": "https://edge.forgecdn.net/files/6382/651/sodium-neoforge-0.6.13%2bmc1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:xaerominimap_neoforge_1_21_1_26_4_2_jar",
+                    "name": "Xaero's Minimap",
+                    "type": "File",
+                    "artifact": {
+                        "size": 2185409,
+                        "MD5": "17eff3fe469527971f1f05990f3527f8",
+                        "path": "mods/xaerominimap-neoforge-1.21.1-26.4.2.jar",
+                        "url": "https://cdn.modrinth.com/data/1bokaNcj/versions/JXvcT1hp/xaerominimap-neoforge-1.21.1-26.4.2.jar"
                     }
                 }
             ]
