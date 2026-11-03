@@ -1009,6 +1009,17 @@
                         "path": "mods/create_train_perspective-1.1.1.jar",
                         "url": "https://cdn.modrinth.com/data/MAuPqvf1/versions/dR2F5bfH/create_train_perspective-1.1.1.jar"
                     }
+                },
+                {
+                    "id": "hachi-create:servers.dat",
+                    "name": "マルチプレイの鯖一覧",
+                    "type": "File",
+                    "artifact": {
+                        "size": 81,
+                        "MD5": "07914b9a214b44688277ce4acf8e591f",
+                        "path": "servers.dat",
+                        "url": "https://hachimitsuki.github.io/hachicrauncher-distro/repo/create/servers.dat"
+                    }
                 }
             ]
         },

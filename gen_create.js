@@ -17,6 +17,7 @@ const CFG = {
     SERVER_ID: 'hachi-create-1.21.1',
     SERVER_NAME: 'Create鯖',
     SERVER_ADDR: '172.237.20.45:25565',
+    SERVER_LIST_NAME: 'はちみつ Create サーバー',   // マルチプレイの一覧に出る名前
     PAGES: 'https://hachimitsuki.github.io/hachicrauncher-distro/repo',
     DISTRO_DIR: 'D:/Repos/hachicrauncher-distro',
     WORK: 'D:/claude/neoforge_work_21.1.265',
@@ -116,6 +117,24 @@ async function main(){
         modMods.push({ id:`mod:${file.filename.replace(/[^a-z0-9]/gi,'_')}`, name:title[v.project_id]||file.filename, type:'File',
             artifact:{ size:buf.length, MD5:md5(buf), path:`mods/${file.filename}`, url:file.url } })
         console.log('mod ok:', file.filename) }
+
+    // 6.5) servers.dat（マルチプレイの一覧に最初から Create鯖を入れる・2026-11-03）
+    //      Helios は File を毎回 MD5 で照合するので、本人が足した鯖や鯖アイコンの記録は起動のたびにこの内容へ戻る
+    const nbtStr=s=>{ const b=Buffer.from(s,'utf8'); const l=Buffer.alloc(2); l.writeUInt16BE(b.length); return Buffer.concat([l,b]) }
+    const int32=n=>{ const b=Buffer.alloc(4); b.writeInt32BE(n); return b }
+    const [srvHost,srvPort]=CFG.SERVER_ADDR.split(':')
+    const srvIp=(srvPort==='25565')?srvHost:CFG.SERVER_ADDR
+    const serversDat=Buffer.concat([
+        Buffer.from([10]), nbtStr(''),
+        Buffer.from([9]), nbtStr('servers'), Buffer.from([10]), int32(1),
+        Buffer.from([8]), nbtStr('ip'), nbtStr(srvIp),
+        Buffer.from([8]), nbtStr('name'), nbtStr(CFG.SERVER_LIST_NAME),
+        Buffer.from([0]),
+        Buffer.from([0])
+    ])
+    save('create/servers.dat', serversDat)
+    modMods.push({ id:'hachi-create:servers.dat', name:'マルチプレイの鯖一覧', type:'File',
+        artifact:{ size:serversDat.length, MD5:md5(serversDat), path:'servers.dat', url:`${CFG.PAGES}/create/servers.dat` } })
 
     // 7) distribution.json 差し替え
     const distPath=path.join(CFG.DISTRO_DIR,'distribution.json')
