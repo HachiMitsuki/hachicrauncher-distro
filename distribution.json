@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1041,6 +1041,17 @@
                         "MD5": "c6c7cf3b6ac1e35d1929732393ebf5b7",
                         "path": "mods/tenshilib-1.21.1-2.3.1-neoforge.jar",
                         "url": "https://cdn.modrinth.com/data/P2rffivS/versions/fcNC0Ok0/tenshilib-1.21.1-2.3.1-neoforge.jar"
+                    }
+                },
+                {
+                    "id": "mod:dungeon_difficulty_neoforge_3_9_2_1_21_1_jar",
+                    "name": "Dungeon Difficulty",
+                    "type": "File",
+                    "artifact": {
+                        "size": 223237,
+                        "MD5": "27c3fbc7947da87273dd424e073bc077",
+                        "path": "mods/dungeon_difficulty-neoforge-3.9.2+1.21.1.jar",
+                        "url": "https://cdn.modrinth.com/data/ENZmbSFZ/versions/uwoMCnrI/dungeon_difficulty-neoforge-3.9.2%2B1.21.1.jar"
                     }
                 },
                 {

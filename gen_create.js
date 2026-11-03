@@ -23,8 +23,9 @@ const CFG = {
     WORK: 'D:/claude/neoforge_work_21.1.265',
     UA: 'HachiCrauncher/1.0.0'
 }
-// サーバー(CT106)と同じ版。クライアント用 44 個（サーバー専用6個と Terralith を除き、表示を軽くする4個を足したもの）
-// 2026-11-03 収納と敵強化の 3 個を足した（Dungeon Difficulty はクライアント非対応なのでサーバーだけ）
+// サーバー(CT106)と同じ版。クライアント用 45 個（サーバー専用6個と Terralith を除き、表示を軽くする4個を足したもの）
+// 2026-11-03 収納と敵強化の 4 個を足した。Dungeon Difficulty は Modrinth では「クライアント非対応」表示だが、
+// 効果（dungeon_difficulty:no_mining）を登録するので、クライアントに無いと接続を拒まれる（1.1.1 で追加）
 const MOD_VERSIONS = [
     'UjX6dr61', 'qUpvzZ83', 'b0u9vk8C', 'hsjVajlP', 'Xe7EqzfQ', 'qrcMVoBD', 'uQsIRky8', 'D6mQaFRW',
     'uhJhCT7X', 'gBrfZy6S', 'HOPX5oro', 'IwtuwMZy', 'bOiDu0LS', 'hZ6B2Z0x', 'gMWQ1LX9', '44pLdPGg',
@@ -34,7 +35,8 @@ const MOD_VERSIONS = [
     'uMOpc5uV', 'eieYbWYb', 'EJzmEPZV', 'dR2F5bfH',
     'px0CCB06',   // Storage Drawers 1.21.1-13.11.4
     'bgyn3PYl',   // Improved Mobs 1.21.1-1.16.0.b（クライアントでは難易度メーターの表示用）
-    'fcNC0Ok0'    // TenshiLib 1.21.1-2.3.1（Improved Mobs の前提）
+    'fcNC0Ok0',   // TenshiLib 1.21.1-2.3.1（Improved Mobs の前提）
+    'uwoMCnrI'    // Dungeon Difficulty 3.9.2+1.21.1-neoforge
 ]
 const OLD_SAME_ADDR = ['hachi-neoforge-1.21.1', 'hachi-pixelmon-1.21.1']
 const STOPPED_SUFFIX = '（停止中）'
@@ -148,7 +150,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.1.0',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.1.1',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods] }
     const i=dist.servers.findIndex(s=>s.id===CFG.SERVER_ID); if(i>=0) dist.servers[i]=entry; else dist.servers.unshift(entry)
