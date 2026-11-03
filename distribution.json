@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1008,6 +1008,39 @@
                         "MD5": "818b62031c717e4a96d3b5e667173594",
                         "path": "mods/create_train_perspective-1.1.1.jar",
                         "url": "https://cdn.modrinth.com/data/MAuPqvf1/versions/dR2F5bfH/create_train_perspective-1.1.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:StorageDrawers_neoforge_1_21_1_13_11_4_jar",
+                    "name": "Storage Drawers",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1131420,
+                        "MD5": "db8d101ed47f3f828526a1604334e5a6",
+                        "path": "mods/StorageDrawers-neoforge-1.21.1-13.11.4.jar",
+                        "url": "https://cdn.modrinth.com/data/guitPqEi/versions/px0CCB06/StorageDrawers-neoforge-1.21.1-13.11.4.jar"
+                    }
+                },
+                {
+                    "id": "mod:improvedmobs_1_21_1_1_16_0_b_neoforge_jar",
+                    "name": "Improved Mobs",
+                    "type": "File",
+                    "artifact": {
+                        "size": 409406,
+                        "MD5": "d510914cf511a848dbf18763a8d1d5a2",
+                        "path": "mods/improvedmobs-1.21.1-1.16.0.b-neoforge.jar",
+                        "url": "https://cdn.modrinth.com/data/23MovWyi/versions/bgyn3PYl/improvedmobs-1.21.1-1.16.0.b-neoforge.jar"
+                    }
+                },
+                {
+                    "id": "mod:tenshilib_1_21_1_2_3_1_neoforge_jar",
+                    "name": "TenshiLib",
+                    "type": "File",
+                    "artifact": {
+                        "size": 762843,
+                        "MD5": "c6c7cf3b6ac1e35d1929732393ebf5b7",
+                        "path": "mods/tenshilib-1.21.1-2.3.1-neoforge.jar",
+                        "url": "https://cdn.modrinth.com/data/P2rffivS/versions/fcNC0Ok0/tenshilib-1.21.1-2.3.1-neoforge.jar"
                     }
                 },
                 {
