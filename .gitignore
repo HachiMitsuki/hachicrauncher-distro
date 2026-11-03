@@ -1,1 +1,4 @@
 installer.jar.log
+# NeoForge の部品を組み立てる作業フォルダ（gen_create.js の WORK・126MB の使い回し用キャッシュ）。
+# このリポは GitHub Pages で公開されるので、作業物を入れない（2026-11-04 D:/claude から移した）
+neoforge_work*/

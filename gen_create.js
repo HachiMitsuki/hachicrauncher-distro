@@ -20,7 +20,9 @@ const CFG = {
     SERVER_LIST_NAME: 'はちみつ Create サーバー',   // マルチプレイの一覧に出る名前
     PAGES: 'https://hachimitsuki.github.io/hachicrauncher-distro/repo',
     DISTRO_DIR: 'D:/Repos/hachicrauncher-distro',
-    WORK: 'D:/claude/neoforge_work_21.1.265',
+    // 作業フォルダはこのリポの中（.gitignore で外す）。D:/claude の中に置くと、PC 間同期の
+    // 秘密の値の見張りが仮の launcher_profiles.json に反応して同期が止まる（2026-11-04 に移した）
+    WORK: 'D:/Repos/hachicrauncher-distro/neoforge_work_21.1.265',
     UA: 'HachiCrauncher/1.0.0'
 }
 // サーバー(CT106)と同じ版。クライアント用 45 個（サーバー専用6個と Terralith を除き、表示を軽くする4個を足したもの）
