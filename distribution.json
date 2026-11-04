@@ -1065,7 +1065,9 @@
                         "url": "https://hachimitsuki.github.io/hachicrauncher-distro/repo/create/servers.dat"
                     }
                 }
-            ]
+            ],
+            "hachiWhitelist": true,
+            "hachiApi": "https://hachicrauncher.hachimitsuki.com"
         },
         {
             "id": "hachi-neoforge-1.21.1",

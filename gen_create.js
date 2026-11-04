@@ -156,6 +156,10 @@ async function main(){
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods] }
     const i=dist.servers.findIndex(s=>s.id===CFG.SERVER_ID); if(i>=0) dist.servers[i]=entry; else dist.servers.unshift(entry)
+    // 2026-11-04 PLAY の前に鯖の名簿を確かめ、無ければランチャーから参加を申し込める（ランチャー 1.1.0 から）。
+    // 受付口を止めたいときは hachiWhitelist を外す（ランチャーは確かめをやめて今までどおり起動する）
+    entry.hachiWhitelist=true
+    entry.hachiApi='https://hachicrauncher.hachimitsuki.com'
     fs.writeFileSync(distPath, JSON.stringify(dist,null,4))
     console.log(`\n✅ done. libs:${libMods.length} game:${gameMods.length} mods:${modMods.length}`)
 }
