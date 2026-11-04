@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1066,6 +1066,189 @@
                     }
                 }
             ],
+            "hachiUserMods": {
+                "distributedModIds": [
+                    "aeronautics_bundled",
+                    "appleskin",
+                    "chunky",
+                    "create",
+                    "create_central_kitchen",
+                    "create_connected",
+                    "create_dragons_plus",
+                    "create_enchantment_industry",
+                    "create_jetpack",
+                    "create_mechanical_extruder",
+                    "create_new_age",
+                    "create_sa",
+                    "create_train_perspective",
+                    "create_ultimate_factory",
+                    "createaddition",
+                    "createbigcannons",
+                    "createdeco",
+                    "dndecor",
+                    "dungeon_difficulty",
+                    "entityculling",
+                    "farmersdelight",
+                    "ferritecore",
+                    "immediatelyfast",
+                    "improvedmobs",
+                    "interiors",
+                    "jade",
+                    "jei",
+                    "lithium",
+                    "mechanicals",
+                    "modernfix",
+                    "openpartiesandclaims",
+                    "railways",
+                    "ritchiesprojectilelib",
+                    "sable",
+                    "sliceanddice",
+                    "sodium",
+                    "spark",
+                    "storagedrawers",
+                    "tenshilib",
+                    "xaerominimap",
+                    "xaeroworldmap",
+                    "yungsapi"
+                ],
+                "checked": [
+                    {
+                        "modId": "iris",
+                        "name": "Iris Shaders",
+                        "note": "影（シェーダー）。NeoForge・1.21.1 用の 1.8.14 以降を入れる（配っている Sodium 0.8 に合う版。1.8.14-beta.1 で確かめた）",
+                        "url": "https://modrinth.com/mod/iris"
+                    },
+                    {
+                        "modId": "mousetweaks",
+                        "name": "Mouse Tweaks",
+                        "note": "マウスでアイテムをまとめて動かす",
+                        "url": "https://modrinth.com/mod/mouse-tweaks"
+                    }
+                ],
+                "suspicious": [
+                    {
+                        "label": "透視（地面や壁の向こうの鉱石・チェストが見える）",
+                        "level": "ずる",
+                        "modIds": [
+                            "rexray"
+                        ],
+                        "keywords": [
+                            "xray",
+                            "orefinder",
+                            "oreesp",
+                            "caveesp"
+                        ],
+                        "except": [
+                            "antixray"
+                        ]
+                    },
+                    {
+                        "label": "自動操作（自動で歩く・掘る bot）",
+                        "level": "ずる",
+                        "modIds": [
+                            "baritone"
+                        ],
+                        "keywords": [
+                            "baritone"
+                        ]
+                    },
+                    {
+                        "label": "ハッククライアント・シード解析",
+                        "level": "ずる",
+                        "modIds": [],
+                        "keywords": [
+                            "meteorclient",
+                            "wurst",
+                            "aristois",
+                            "liquidbounce",
+                            "killaura",
+                            "seedcracker",
+                            "rusherhack",
+                            "futureclient",
+                            "bleachhack"
+                        ]
+                    },
+                    {
+                        "label": "自動クリック",
+                        "level": "ずる",
+                        "modIds": [
+                            "autoclicker",
+                            "enthusia_autoclicker",
+                            "clickmate"
+                        ],
+                        "keywords": [
+                            "autoclick"
+                        ]
+                    },
+                    {
+                        "label": "自動トーテム（死にそうなとき自動で持ち替える）",
+                        "level": "ずる",
+                        "modIds": [
+                            "autototem",
+                            "instantautototem"
+                        ],
+                        "keywords": [
+                            "autototem"
+                        ]
+                    },
+                    {
+                        "label": "フリーカメラ（体を置いたまま視点だけ動かしてのぞける）",
+                        "level": "グレー",
+                        "modIds": [
+                            "freecam",
+                            "legacyfreecam",
+                            "freecam_by_jasonzli",
+                            "zergatulfreecam",
+                            "smooth_freecam"
+                        ],
+                        "keywords": [
+                            "freecam"
+                        ]
+                    },
+                    {
+                        "label": "明るさ最大（暗い洞窟や夜でも昼のように見える）",
+                        "level": "グレー",
+                        "modIds": [
+                            "fullbright",
+                            "neofullbright",
+                            "resource_gamma_util",
+                            "gjeb",
+                            "optimized_fullbright",
+                            "fullbright_neoforged",
+                            "gama",
+                            "simple_gamma_1_21_1_neoforge",
+                            "fullbrightnesstoggle"
+                        ],
+                        "keywords": [
+                            "fullbright",
+                            "gamma"
+                        ]
+                    },
+                    {
+                        "label": "自動釣り",
+                        "level": "グレー",
+                        "modIds": [
+                            "autofish",
+                            "tideautofish"
+                        ],
+                        "keywords": [
+                            "autofish"
+                        ]
+                    },
+                    {
+                        "label": "自動建築（設計図どおりに自動でブロックを置く）",
+                        "level": "グレー",
+                        "modIds": [
+                            "buildprint"
+                        ],
+                        "keywords": [
+                            "litematicaprinter",
+                            "schematicprinter"
+                        ]
+                    }
+                ],
+                "reportWebhook": "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTU2NzMxNDUwODE1MjcwNTIwOC9jTXFWS1VINmd3bHVmTVZiS2lqUzhaTWFDNTdEeUhNdWhMYWVhNVBpQkJJR1NNTmExRURqRk1kREZtWThiMzM3cmFkUQ=="
+            },
             "hachiWhitelist": true,
             "hachiApi": "https://hachicrauncher.hachimitsuki.com"
         },

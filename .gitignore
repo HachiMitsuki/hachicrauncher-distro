@@ -2,3 +2,7 @@ installer.jar.log
 # NeoForge の部品を組み立てる作業フォルダ（gen_create.js の WORK・126MB の使い回し用キャッシュ）。
 # このリポは GitHub Pages で公開されるので、作業物を入れない（2026-11-04 D:/claude から移した）
 neoforge_work*/
+# 怪しい MOD の知らせを送る Discord の Webhook（gen_create.js が読む・鍵なので入れない）
+.discord-webhook-url
+# 使っていない中継（Cloudflare Worker）の下書き（2026-11-04 に「直接書く」に決まった）
+relay/
