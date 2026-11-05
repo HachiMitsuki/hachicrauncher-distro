@@ -1247,7 +1247,7 @@
                         ]
                     }
                 ],
-                "reportWebhook": "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTU2NzMxNDUwODE1MjcwNTIwOC9jTXFWS1VINmd3bHVmTVZiS2lqUzhaTWFDNTdEeUhNdWhMYWVhNVBpQkJJR1NNTmExRURqRk1kREZtWThiMzM3cmFkUQ=="
+                "report": true
             },
             "hachiWhitelist": true,
             "hachiApi": "https://hachicrauncher.hachimitsuki.com"

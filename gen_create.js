@@ -70,17 +70,11 @@ const SUSPICIOUS_USER_MODS = [
     { label: '自動釣り', level: 'グレー', modIds: ['autofish', 'tideautofish'], keywords: ['autofish'] },
     { label: '自動建築（設計図どおりに自動でブロックを置く）', level: 'グレー', modIds: ['buildprint'], keywords: ['litematicaprinter', 'schematicprinter'] }
 ]
-// 怪しい MOD の知らせを送る Discord の Webhook（はちみつきだけが見るチャンネル・2026-11-04 本人の判断シート 3 枚目）。
-// URL はこのスクリプトに書かず、同じフォルダの .discord-webhook-url（git に入れない）に本人が 1 行で置く。
-// 配布一覧には base64 にして書く（公開ページから Webhook を拾い集めるプログラムに拾われないため。読めば戻せるので鍵ではない）
-function reportWebhook(){
-    const f=path.join(CFG.DISTRO_DIR,'.discord-webhook-url')
-    if(!fs.existsSync(f)){ console.log('report webhook: off (.discord-webhook-url が無い)'); return '' }
-    const url=fs.readFileSync(f,'utf8').trim()
-    if(!/^https:\/\/(discord|discordapp)\.com\/api\/webhooks\/\d+\/[\w-]+$/.test(url)) throw new Error('.discord-webhook-url is not a Discord webhook URL')
-    console.log('report webhook: on')
-    return Buffer.from(url,'utf8').toString('base64')
-}
+// 怪しい MOD の知らせ（はちみつきだけが見るチャンネルに出す）。ランチャー 1.1.2 から、受付口（hachiApi の /v1/report）に送り、
+// 受付口の bot が Discord に出す。配布一覧には「知らせる／知らせない」（hachiUserMods.report）だけを書き、鍵は一切書かない。
+// 以前は Discord の Webhook を base64 にしてここに書いていたが、公開の配布一覧から誰でも取り出せたので外した
+// （2026-11-05 判断シート「Webhook漏えいの直し方を決める」）。知らせを止めたいときは REPORT_SUSPICIOUS_MODS を false にする
+const REPORT_SUSPICIOUS_MODS = true
 
 // jar の META-INF/neoforge.mods.toml の [[mods]] にある modId（依存の欄は読まない）。ランチャーの usermods.js と同じ読み方
 function jarModIds(buf){
@@ -218,7 +212,7 @@ async function main(){
     const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.1.2',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
-        hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, reportWebhook:reportWebhook() } }
+        hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
     const i=dist.servers.findIndex(s=>s.id===CFG.SERVER_ID); if(i>=0) dist.servers[i]=entry; else dist.servers.unshift(entry)
     // 2026-11-04 PLAY の前に鯖の名簿を確かめ、無ければランチャーから参加を申し込める（ランチャー 1.1.0 から）。
     // 受付口を止めたいときは hachiWhitelist を外す（ランチャーは確かめをやめて今までどおり起動する）
