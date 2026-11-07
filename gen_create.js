@@ -8,6 +8,10 @@
 // 自動接続を切り、Create鯖を mainServer にする（2026-11-03 本人の判断シート）。
 //
 // 2026-11-04 1.1.2: 友だちが自分で足した MOD の扱い（hachiUserMods）を足した。MOD の中身は 1.1.1 と同じ。
+// 2026-11-08 1.2.0: 影（Iris＋Create の仕掛けを影で崩さないつなぎの MOD＋影パック 2 つ）と、インベントリ整理
+//   （Inventory Profiles Next＋libIPN）を全員に配るようにした（本人の判断シート 2 枚）。どれもクライアントだけで動くので、
+//   サーバー(CT106)の mods は変えていない。影は最初オフで、使う人がゲームの中で O キーを押して影パックを選ぶ。
+//   Iris の設定ファイル(config/iris.properties)は配らない（配ると起動のたびに配布の内容へ戻り、各自の選択が消えるため）
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -28,7 +32,8 @@ const CFG = {
     WORK: 'D:/Repos/hachicrauncher-distro/neoforge_work_21.1.265',
     UA: 'HachiCrauncher/1.0.0'
 }
-// サーバー(CT106)と同じ版。クライアント用 45 個（サーバー専用6個と Terralith を除き、表示を軽くする4個を足したもの）
+// サーバー(CT106)と同じ版。クライアント用 49 個（サーバー専用6個と Terralith を除き、表示を軽くする4個と、
+// 1.2.0 で足したクライアントだけの 4 個〈影 2・整理 2〉を足したもの）
 // 2026-11-03 収納と敵強化の 4 個を足した。Dungeon Difficulty は Modrinth では「クライアント非対応」表示だが、
 // 効果（dungeon_difficulty:no_mining）を登録するので、クライアントに無いと接続を拒まれる（1.1.1 で追加）
 const MOD_VERSIONS = [
@@ -41,7 +46,18 @@ const MOD_VERSIONS = [
     'px0CCB06',   // Storage Drawers 1.21.1-13.11.4
     'bgyn3PYl',   // Improved Mobs 1.21.1-1.16.0.b（クライアントでは難易度メーターの表示用）
     'fcNC0Ok0',   // TenshiLib 1.21.1-2.3.1（Improved Mobs の前提）
-    'uwoMCnrI'    // Dungeon Difficulty 3.9.2+1.21.1-neoforge
+    'uwoMCnrI',   // Dungeon Difficulty 3.9.2+1.21.1-neoforge
+    // 1.2.0（2026-11-08）ここから下はクライアントだけ。サーバーには入れない
+    'KduFYu4t',   // Iris 1.8.14-beta.1+1.21.1-neoforge（影。配っている Sodium 0.8.13 に合う版はこれだけ。
+                  //   jar の中では Minecraft の版を「1.21.1 未満」と書いているが、11-04〜05 にこのPCの 1.21.1 で読み込まれて動いた）
+    '6ZQz5Ow2',   // Iris & Oculus Flywheel Compat 2.4.0（Create が中に持つ Flywheel 1.0.6 で描く仕掛けを、影の下でも崩さない）
+    'vjuNnHLv',   // Inventory Profiles Next 2.2.5（インベントリ整理。前提の Kotlin for Forge は上で配っている）
+    'BGe4KMlE'    // libIPN 6.6.3（Inventory Profiles Next の前提）
+]
+// 影パック（shaderpacks/ に置く。MOD ではないので jar の ID は読まない）。Modrinth の配布元を直接参照する（MOD と同じ）
+const SHADER_VERSIONS = [
+    'Bqen1mJX',   // Complementary Shaders - Reimagined r5.9.3（きれいな方）
+    't4YRxQug'    // MakeUp - Ultra Fast 9.6（軽い方。弱い PC 向け）
 ]
 const OLD_SAME_ADDR = ['hachi-neoforge-1.21.1', 'hachi-pixelmon-1.21.1']
 const STOPPED_SUFFIX = '（停止中）'
@@ -52,8 +68,8 @@ const STOPPED_SUFFIX = '（停止中）'
 // 確かめ済み: はちみつきが自分のアカウントで入れて Create鯖に入れた MOD（ランチャーの 設定 → Mods に出る）。
 // 足すときは ① jar の中を見て、ブロック・アイテム・効果などを登録していないか確かめる
 // ② 自分のアカウントで入れて Create鯖に入れるか試す ③ 配っている MOD と同じ ID は入れられない（下で止まる）
+// 1.2.0 で Iris を配るようにしたので、ここから外した（配っている MOD と同じ ID があると下で止まる）
 const CHECKED_USER_MODS = [
-    { modId: 'iris', name: 'Iris Shaders', note: '影（シェーダー）。NeoForge・1.21.1 用の 1.8.14 以降を入れる（配っている Sodium 0.8 に合う版。1.8.14-beta.1 で確かめた）', url: 'https://modrinth.com/mod/iris' },
     { modId: 'mousetweaks', name: 'Mouse Tweaks', note: 'マウスでアイテムをまとめて動かす', url: 'https://modrinth.com/mod/mouse-tweaks' }
 ]
 // 怪しい MOD（見つけたら Discord に知らせる・消さない）。2026-11-04 に Web・Reddit（agy）と Modrinth で調べ、
@@ -162,9 +178,10 @@ async function main(){
         subModules:[ { id:vjId, name:'NeoForge Version Manifest', type:'VersionManifest', artifact:{ size:vjBuf.length, MD5:md5(vjBuf), url:`${CFG.PAGES}/versions/${vjId}/${vjId}.json` } }, ...libMods, ...gameMods ] }
 
     // 6) MOD: Modrinth の version id から（公式CDN直参照・sha1 で取得物を照合してから MD5 を測る）
-    const ids=encodeURIComponent(JSON.stringify(MOD_VERSIONS))
+    const ALL_VERSIONS=[...MOD_VERSIONS, ...SHADER_VERSIONS]
+    const ids=encodeURIComponent(JSON.stringify(ALL_VERSIONS))
     const vers=await getJson(`https://api.modrinth.com/v2/versions?ids=${ids}`)
-    if(vers.length!==MOD_VERSIONS.length) throw new Error(`expected ${MOD_VERSIONS.length} versions, got ${vers.length}`)
+    if(vers.length!==ALL_VERSIONS.length) throw new Error(`expected ${ALL_VERSIONS.length} versions, got ${vers.length}`)
     const pids=encodeURIComponent(JSON.stringify([...new Set(vers.map(v=>v.project_id))]))
     const projs=await getJson(`https://api.modrinth.com/v2/projects?ids=${pids}`)
     const title={}; for(const p of projs) title[p.id]=p.title
@@ -178,6 +195,13 @@ async function main(){
         modMods.push({ id:`mod:${file.filename.replace(/[^a-z0-9]/gi,'_')}`, name:title[v.project_id]||file.filename, type:'File',
             artifact:{ size:buf.length, MD5:md5(buf), path:`mods/${file.filename}`, url:file.url } })
         console.log('mod ok:', file.filename) }
+    for(const vid of SHADER_VERSIONS){ const v=vers.find(x=>x.id===vid)
+        const file=v.files.find(x=>x.primary)||v.files[0]
+        const buf=await dl(file.url)
+        if(sha1(buf)!==file.hashes.sha1) throw new Error(`sha1 mismatch ${file.filename}`)
+        modMods.push({ id:`shaderpack:${file.filename.replace(/[^a-z0-9]/gi,'_')}`, name:title[v.project_id]||file.filename, type:'File',
+            artifact:{ size:buf.length, MD5:md5(buf), path:`shaderpacks/${file.filename}`, url:file.url } })
+        console.log('shaderpack ok:', file.filename) }
     // 確かめ済みの MOD が配っている MOD と同じ ID だと、ランチャーが「外したMOD」へ移してしまうので止める
     const clash=CHECKED_USER_MODS.filter(c=>distributedModIds.has(c.modId))
     if(clash.length) throw new Error(`checked user mods already distributed: ${clash.map(c=>c.modId).join(',')}`)
@@ -209,7 +233,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.1.2',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.2.0',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }

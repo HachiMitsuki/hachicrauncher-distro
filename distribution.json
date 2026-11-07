@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1055,6 +1055,72 @@
                     }
                 },
                 {
+                    "id": "mod:iris_neoforge_1_8_14_beta_1_mc1_21_1_jar",
+                    "name": "Iris Shaders",
+                    "type": "File",
+                    "artifact": {
+                        "size": 2540723,
+                        "MD5": "6b68276a6718656ec476cfac69dfe013",
+                        "path": "mods/iris-neoforge-1.8.14-beta.1+mc1.21.1.jar",
+                        "url": "https://cdn.modrinth.com/data/YL57xq9U/versions/KduFYu4t/iris-neoforge-1.8.14-beta.1%2Bmc1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:iris_flywheel_compat_NeoForge_2_4_0_jar",
+                    "name": "Iris & Oculus Flywheel Compat",
+                    "type": "File",
+                    "artifact": {
+                        "size": 907133,
+                        "MD5": "9d3b7b83bd5747f1825cecf3f80fba26",
+                        "path": "mods/iris-flywheel-compat-NeoForge-2.4.0.jar",
+                        "url": "https://cdn.modrinth.com/data/ndHYMY2K/versions/6ZQz5Ow2/iris-flywheel-compat-NeoForge-2.4.0.jar"
+                    }
+                },
+                {
+                    "id": "mod:InventoryProfilesNext_neoforge_1_21_1_2_2_5_jar",
+                    "name": "Inventory Profiles Next",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1295466,
+                        "MD5": "0cef57934a1a913a84af75fccedb0995",
+                        "path": "mods/InventoryProfilesNext-neoforge-1.21.1-2.2.5.jar",
+                        "url": "https://cdn.modrinth.com/data/O7RBXm3n/versions/vjuNnHLv/InventoryProfilesNext-neoforge-1.21.1-2.2.5.jar"
+                    }
+                },
+                {
+                    "id": "mod:libIPN_neoforge_1_21_1_6_6_3_jar",
+                    "name": "libIPN",
+                    "type": "File",
+                    "artifact": {
+                        "size": 626146,
+                        "MD5": "208d2c5832cf08b4bf64bae3b6025040",
+                        "path": "mods/libIPN-neoforge-1.21.1-6.6.3.jar",
+                        "url": "https://cdn.modrinth.com/data/onSQdWhM/versions/BGe4KMlE/libIPN-neoforge-1.21.1-6.6.3.jar"
+                    }
+                },
+                {
+                    "id": "shaderpack:ComplementaryReimagined_r5_9_3_zip",
+                    "name": "Complementary Shaders - Reimagined",
+                    "type": "File",
+                    "artifact": {
+                        "size": 553397,
+                        "MD5": "54cd249cd1e95a4e19f0ea2cb4369e71",
+                        "path": "shaderpacks/ComplementaryReimagined_r5.9.3.zip",
+                        "url": "https://cdn.modrinth.com/data/HVnmMxH1/versions/Bqen1mJX/ComplementaryReimagined_r5.9.3.zip"
+                    }
+                },
+                {
+                    "id": "shaderpack:MakeUp_UltraFast_9_6_zip",
+                    "name": "MakeUp - Ultra Fast",
+                    "type": "File",
+                    "artifact": {
+                        "size": 406830,
+                        "MD5": "af9d9438ef310e24e4075a184b1e0f03",
+                        "path": "shaderpacks/MakeUp-UltraFast-9.6.zip",
+                        "url": "https://cdn.modrinth.com/data/izsIPI7a/versions/t4YRxQug/MakeUp-UltraFast-9.6.zip"
+                    }
+                },
+                {
                     "id": "hachi-create:servers.dat",
                     "name": "マルチプレイの鯖一覧",
                     "type": "File",
@@ -1093,8 +1159,12 @@
                     "immediatelyfast",
                     "improvedmobs",
                     "interiors",
+                    "inventoryprofilesnext",
+                    "iris",
+                    "irisflw",
                     "jade",
                     "jei",
+                    "libipn",
                     "lithium",
                     "mechanicals",
                     "modernfix",
@@ -1112,12 +1182,6 @@
                     "yungsapi"
                 ],
                 "checked": [
-                    {
-                        "modId": "iris",
-                        "name": "Iris Shaders",
-                        "note": "影（シェーダー）。NeoForge・1.21.1 用の 1.8.14 以降を入れる（配っている Sodium 0.8 に合う版。1.8.14-beta.1 で確かめた）",
-                        "url": "https://modrinth.com/mod/iris"
-                    },
                     {
                         "modId": "mousetweaks",
                         "name": "Mouse Tweaks",
