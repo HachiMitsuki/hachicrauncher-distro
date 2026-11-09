@@ -12,6 +12,9 @@
 //   （Inventory Profiles Next＋libIPN）を全員に配るようにした（本人の判断シート 2 枚）。どれもクライアントだけで動くので、
 //   サーバー(CT106)の mods は変えていない。影は最初オフで、使う人がゲームの中で O キーを押して影パックを選ぶ。
 //   Iris の設定ファイル(config/iris.properties)は配らない（配ると起動のたびに配布の内容へ戻り、各自の選択が消えるため）
+// 2026-11-09 1.3.0: Create のアドオン 11 個（Copycats+・Encased・Bits 'n' Bobs と前提 2 つ・Propulsion・Aeroworks・
+//   Copycats+ の重さ対応・Numismatics・Blocks & Bogies・Escalated）を足した（本人の判断シート）。ブロックを足すので
+//   サーバー(CT106)の mods にも同じ版を入れる
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -32,8 +35,8 @@ const CFG = {
     WORK: 'D:/Repos/hachicrauncher-distro/neoforge_work_21.1.265',
     UA: 'HachiCrauncher/1.0.0'
 }
-// サーバー(CT106)と同じ版。クライアント用 49 個（サーバー専用6個と Terralith を除き、表示を軽くする4個と、
-// 1.2.0 で足したクライアントだけの 4 個〈影 2・整理 2〉を足したもの）
+// サーバー(CT106)と同じ版。クライアント用 60 個（サーバー専用6個と Terralith を除き、表示を軽くする4個と、
+// 1.2.0 で足したクライアントだけの 4 個〈影 2・整理 2〉と、1.3.0 で足した Create のアドオン 11 個を足したもの）
 // 2026-11-03 収納と敵強化の 4 個を足した。Dungeon Difficulty は Modrinth では「クライアント非対応」表示だが、
 // 効果（dungeon_difficulty:no_mining）を登録するので、クライアントに無いと接続を拒まれる（1.1.1 で追加）
 const MOD_VERSIONS = [
@@ -52,7 +55,21 @@ const MOD_VERSIONS = [
                   //   jar の中では Minecraft の版を「1.21.1 未満」と書いているが、11-04〜05 にこのPCの 1.21.1 で読み込まれて動いた）
     '6ZQz5Ow2',   // Iris & Oculus Flywheel Compat 2.4.0（Create が中に持つ Flywheel 1.0.6 で描く仕掛けを、影の下でも崩さない）
     'vjuNnHLv',   // Inventory Profiles Next 2.2.5（インベントリ整理。前提の Kotlin for Forge は上で配っている）
-    'BGe4KMlE'    // libIPN 6.6.3（Inventory Profiles Next の前提）
+    'BGe4KMlE',   // libIPN 6.6.3（Inventory Profiles Next の前提）
+    // 1.3.0（2026-11-09）Create のアドオン 11 個。ブロックを足すので、サーバー(CT106)にも同じ版を入れてある。
+    //   どれも jar の中の版の指定が Create 6.0.10・NeoForge 21.1.265・Sable 2.0.6 に合うことを確かめた。
+    //   Create: Ballast 0.1.1（XzlV3NlT）は NeoForge を「21.1.227 未満」と決めていて読み込めないので入れていない
+    'zLlVJXf0',   // Create: Copycats+ 3.0.11（ほかのブロックの見た目をまねるブロック）
+    'pld6Eng9',   // Create Encased 1.10.0-fix1（軸・歯車・パイプにケースをかぶせる）
+    'g9Lmjjc5',   // Create: Bits 'n' Bobs 2.3.5（飾りと小さな仕掛け）
+    'BOTN7zzN',   // Strut Your Stuff 1.3.1（Bits 'n' Bobs の前提）
+    'dxtZVosY',   // Azimuth API 1.4.10（Bits 'n' Bobs の前提）
+    'H13U56dc',   // Create Propulsion: Simulated 1.1.5（飛行船の推進器。プラチナ鉱石を足すが、事前に作った半径 1500 の中には出ない）
+    '6kk7ruR3',   // Create: Aeroworks 1.5.0（飛行船のジャイロ・操縦かん）
+    'wsXjRa7l',   // Copycats+ aeronautics weight 1.1.1（Copycats+ のブロックに飛行船用の重さを付ける）
+    'kVi3TESX',   // Create: Numismatics 1.1.0（お金と店）
+    'nC19ZMKK',   // Create: Blocks & Bogies 1.0.8（列車の台車）
+    'vJ49zRJl'    // Create: Escalated 1.3.2（エスカレーター）
 ]
 // 影パック（shaderpacks/ に置く。MOD ではないので jar の ID は読まない）。Modrinth の配布元を直接参照する（MOD と同じ）
 const SHADER_VERSIONS = [
@@ -233,7 +250,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.2.0',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.3.0',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }

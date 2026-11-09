@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1099,6 +1099,127 @@
                     }
                 },
                 {
+                    "id": "mod:copycats_3_0_11_mc_1_21_1_neoforge_jar",
+                    "name": "Create: Copycats+",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1805121,
+                        "MD5": "35e5817518c4c1e57ff5e7b3e7b43ad4",
+                        "path": "mods/copycats-3.0.11+mc.1.21.1-neoforge.jar",
+                        "url": "https://cdn.modrinth.com/data/UT2M39wf/versions/zLlVJXf0/copycats-3.0.11%2Bmc.1.21.1-neoforge.jar"
+                    }
+                },
+                {
+                    "id": "mod:Create_Encased_1_21_1_1_10_0_fix1_jar",
+                    "name": "Create Encased",
+                    "type": "File",
+                    "artifact": {
+                        "size": 3383308,
+                        "MD5": "7bef781d697f1adb5246bf2282126ff3",
+                        "path": "mods/Create Encased-1.21.1-1.10.0-fix1.jar",
+                        "url": "https://cdn.modrinth.com/data/hSSqdyU1/versions/pld6Eng9/Create%20Encased-1.21.1-1.10.0-fix1.jar"
+                    }
+                },
+                {
+                    "id": "mod:bits_n_bobs_2_3_5_jar",
+                    "name": "Create: Bits 'n' Bobs",
+                    "type": "File",
+                    "artifact": {
+                        "size": 2433531,
+                        "MD5": "95d18ce1642079cf05ebfd2ad8883cff",
+                        "path": "mods/bits_n_bobs-2.3.5.jar",
+                        "url": "https://cdn.modrinth.com/data/T8bvmqVZ/versions/g9Lmjjc5/bits_n_bobs-2.3.5.jar"
+                    }
+                },
+                {
+                    "id": "mod:struts_1_3_1_jar",
+                    "name": "Strut Your Stuff (Struts)",
+                    "type": "File",
+                    "artifact": {
+                        "size": 216678,
+                        "MD5": "f1522fdbf5c2c1078fe6bd45345c40c7",
+                        "path": "mods/struts-1.3.1.jar",
+                        "url": "https://cdn.modrinth.com/data/sHO3MhQx/versions/BOTN7zzN/struts-1.3.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:azimuth_1_4_10_jar",
+                    "name": "Azimuth API",
+                    "type": "File",
+                    "artifact": {
+                        "size": 143818,
+                        "MD5": "09a98ae178cb1dd76eb405e24cd8f438",
+                        "path": "mods/azimuth-1.4.10.jar",
+                        "url": "https://cdn.modrinth.com/data/RpH8tmT1/versions/dxtZVosY/azimuth-1.4.10.jar"
+                    }
+                },
+                {
+                    "id": "mod:createpropulsion_1_1_5_jar",
+                    "name": "Create Propulsion: Simulated",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1707765,
+                        "MD5": "054843664d3bef2d61e6e492503fd824",
+                        "path": "mods/createpropulsion-1.1.5.jar",
+                        "url": "https://cdn.modrinth.com/data/ApkoHNO9/versions/H13U56dc/createpropulsion-1.1.5.jar"
+                    }
+                },
+                {
+                    "id": "mod:aeroworks_1_5_0_jar",
+                    "name": "Create: Aeroworks",
+                    "type": "File",
+                    "artifact": {
+                        "size": 790152,
+                        "MD5": "82cea3f36b3f67f01929d75b73487608",
+                        "path": "mods/aeroworks-1.5.0.jar",
+                        "url": "https://cdn.modrinth.com/data/P26k79kP/versions/6kk7ruR3/aeroworks-1.5.0.jar"
+                    }
+                },
+                {
+                    "id": "mod:aerocopycats_1_1_1_jar",
+                    "name": "Copycats+ aeronautics weight",
+                    "type": "File",
+                    "artifact": {
+                        "size": 14702,
+                        "MD5": "86226e9feb644204b20a00646889b2bd",
+                        "path": "mods/aerocopycats-1.1.1.jar",
+                        "url": "https://cdn.modrinth.com/data/wjpmYU1u/versions/wsXjRa7l/aerocopycats-1.1.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:CreateNumismatics_1_1_0_neoforge_mc1_21_1_jar",
+                    "name": "Create: Numismatics",
+                    "type": "File",
+                    "artifact": {
+                        "size": 1894517,
+                        "MD5": "ae03c5412553615f3c6d1a56cecb5390",
+                        "path": "mods/CreateNumismatics-1.1.0+neoforge-mc1.21.1.jar",
+                        "url": "https://cdn.modrinth.com/data/Jdbbtt0i/versions/kVi3TESX/CreateNumismatics-1.1.0%2Bneoforge-mc1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:create_bb_1_0_8_1_21_1_jar",
+                    "name": "Create: Blocks & Bogies",
+                    "type": "File",
+                    "artifact": {
+                        "size": 2618795,
+                        "MD5": "198d93478e6816e64e0b5624b83633ef",
+                        "path": "mods/create_bb-1.0.8-1.21.1.jar",
+                        "url": "https://cdn.modrinth.com/data/j4ARnQwY/versions/nC19ZMKK/create_bb-1.0.8-1.21.1.jar"
+                    }
+                },
+                {
+                    "id": "mod:escalated_1_3_2_mc_1_21_1_jar",
+                    "name": "Create: Escalated",
+                    "type": "File",
+                    "artifact": {
+                        "size": 512624,
+                        "MD5": "5b3693779f0bd150f57957b91d3da4be",
+                        "path": "mods/escalated-1.3.2+mc.1.21.1.jar",
+                        "url": "https://cdn.modrinth.com/data/LyOBYG8Q/versions/vJ49zRJl/escalated-1.3.2%2Bmc.1.21.1.jar"
+                    }
+                },
+                {
                     "id": "shaderpack:ComplementaryReimagined_r5_9_3_zip",
                     "name": "Complementary Shaders - Reimagined",
                     "type": "File",
@@ -1134,10 +1255,16 @@
             ],
             "hachiUserMods": {
                 "distributedModIds": [
+                    "aerocopycats",
                     "aeronautics_bundled",
+                    "aeroworks",
                     "appleskin",
+                    "azimuth",
+                    "bits_n_bobs",
                     "chunky",
+                    "copycats",
                     "create",
+                    "create_bb",
                     "create_central_kitchen",
                     "create_connected",
                     "create_dragons_plus",
@@ -1150,10 +1277,13 @@
                     "create_ultimate_factory",
                     "createaddition",
                     "createbigcannons",
+                    "createcasing",
                     "createdeco",
+                    "createpropulsion",
                     "dndecor",
                     "dungeon_difficulty",
                     "entityculling",
+                    "escalated",
                     "farmersdelight",
                     "ferritecore",
                     "immediatelyfast",
@@ -1168,6 +1298,7 @@
                     "lithium",
                     "mechanicals",
                     "modernfix",
+                    "numismatics",
                     "openpartiesandclaims",
                     "railways",
                     "ritchiesprojectilelib",
@@ -1176,6 +1307,7 @@
                     "sodium",
                     "spark",
                     "storagedrawers",
+                    "struts",
                     "tenshilib",
                     "xaerominimap",
                     "xaeroworldmap",
