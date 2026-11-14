@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1272,6 +1272,17 @@
                         "MD5": "cc87e5716eb52398b2c46e4032126de4",
                         "path": "mods/catalogue-neoforge-1.21.1-1.11.2.jar",
                         "url": "https://www.cursemaven.com/curse/maven/catalogue-459701/6926815/catalogue-459701-6926815.jar"
+                    }
+                },
+                {
+                    "id": "mod:hachi_masa_ja_1_4_2_jar",
+                    "name": "Hachi masa日本語",
+                    "type": "File",
+                    "artifact": {
+                        "size": 102070,
+                        "MD5": "436524dae1ed6a5bce906daba95a7ea0",
+                        "path": "mods/hachi-masa-ja-1.4.2.jar",
+                        "url": "https://hachimitsuki.github.io/hachicrauncher-distro/repo/create/mods/hachi-masa-ja-1.4.2.jar"
                     }
                 },
                 {

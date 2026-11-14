@@ -30,6 +30,10 @@
 //   （index 0–15）。Ray は colortex16–21 を使うので、Iris 1.10.5 以降（32 個対応）が必要だが、その系列は
 //   1.21.11 / 26.x 向けで、1.21.1 用の版は無い。新しい Ray nightly もまだ c7fa099 のままで、同じエラーの
 //   Issue #8 が開いたまま。サーバー(CT106)の mods は変えない。
+// 2026-11-14 1.4.2: MaFgLib・Forgematica・Tweakerge・BoccHUD の設定画面を日本語にする、クライアント専用の
+//   言語MOD（hachi-masa-ja）を配る。ゲームの言語が日本語なら、リソースパックを自分でオンにしなくても読まれる。
+//   訳は Mya 氏の「Mya's masady mods jp translation」1.1.0（LGPL-3.0。1.21.1 は lang/1.21.2）と、
+//   sakura-ryoko 系の日本語、および MiniHUD の不足分の補完。本体の jar は変えず、サーバー(CT106)の mods も変えない。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -99,6 +103,14 @@ const SHADER_VERSIONS = [
 // Modrinth に無い影パック。repo/create/shaderpacks/ に置いて GitHub Pages から配る
 const HOSTED_SHADER_PACKS = [
     // 1.4.1: Ray を外した（Iris 1.8.x は colortex が 16 個までで、Ray は 16 以降を使う）
+]
+// Modrinth に無いクライアント専用MOD。repo/create/mods/ に置いて GitHub Pages から配る
+const HOSTED_CLIENT_MODS = [
+    {
+        filename: 'hachi-masa-ja-1.4.2.jar',
+        name: 'Hachi masa日本語',
+        sha256: 'c88978808e8e26c5647853ee163085fea35635b86aff9c03485fe402d23960dd'
+    }
 ]
 // Modrinth に無い MOD。CurseForge 公式の CurseMaven URL を直接参照する（本体は自前ホストしない）
 const CURSE_MODS = [
@@ -276,6 +288,17 @@ async function main(){
             artifact:{ size:buf.length, MD5:md5(buf), path:`shaderpacks/${pack.filename}`, url:`${CFG.PAGES}/create/shaderpacks/${pack.filename}` } })
         console.log('hosted shaderpack ok:', pack.filename)
     }
+    for (const pack of HOSTED_CLIENT_MODS) {
+        const destRel = `create/mods/${pack.filename}`
+        const destAbs = path.join(REPO, destRel)
+        const buf = fs.readFileSync(destAbs)
+        if (pack.sha256 && sha256(buf) !== pack.sha256) throw new Error(`sha256 mismatch ${pack.filename}`)
+        save(destRel, buf)
+        for (const id of jarModIds(buf)) distributedModIds.add(id)
+        modMods.push({ id:`mod:${pack.filename.replace(/[^a-z0-9]/gi,'_')}`, name:pack.name, type:'File',
+            artifact:{ size:buf.length, MD5:md5(buf), path:`mods/${pack.filename}`, url:`${CFG.PAGES}/create/mods/${pack.filename}` } })
+        console.log('hosted client mod ok:', pack.filename)
+    }
     // 確かめ済みの MOD が配っている MOD と同じ ID だと、ランチャーが「外したMOD」へ移してしまうので止める
     const clash=CHECKED_USER_MODS.filter(c=>distributedModIds.has(c.modId))
     if(clash.length) throw new Error(`checked user mods already distributed: ${clash.map(c=>c.modId).join(',')}`)
@@ -307,7 +330,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.1',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.2',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
