@@ -26,6 +26,10 @@
 //   Forgematica は 0.4.2 が落ちるので 0.4.3 に固定。Catalogue は CurseForge（Modrinth に無い）で、
 //   必須の前提は無し（Framework は不要。Configured は任意なので配らない）。
 //   どれもクライアントだけで、サーバー(CT106)の mods は変えない。
+// 2026-11-14 1.4.1: Ray を外した。Iris 1.8.14-beta.1（NeoForge 1.21.1 向けの最新）は colortex が 16 個まで
+//   （index 0–15）。Ray は colortex16–21 を使うので、Iris 1.10.5 以降（32 個対応）が必要だが、その系列は
+//   1.21.11 / 26.x 向けで、1.21.1 用の版は無い。新しい Ray nightly もまだ c7fa099 のままで、同じエラーの
+//   Issue #8 が開いたまま。サーバー(CT106)の mods は変えない。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -94,12 +98,7 @@ const SHADER_VERSIONS = [
 ]
 // Modrinth に無い影パック。repo/create/shaderpacks/ に置いて GitHub Pages から配る
 const HOSTED_SHADER_PACKS = [
-    {
-        filename: 'Ray-0.1.0a0-c7fa099-nightly.zip',
-        name: 'Ray',
-        sha256: '1423425e7c9a27b8258cce3bf85b3c324f47be4df8345196bd1c66030918c263',
-        source: 'https://github.com/kuwacom/ray/releases/download/nightly/Ray-0.1.0a0-c7fa099-nightly.zip'
-    }
+    // 1.4.1: Ray を外した（Iris 1.8.x は colortex が 16 個までで、Ray は 16 以降を使う）
 ]
 // Modrinth に無い MOD。CurseForge 公式の CurseMaven URL を直接参照する（本体は自前ホストしない）
 const CURSE_MODS = [
@@ -308,7 +307,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.0',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.1',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }

@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1294,17 +1294,6 @@
                         "MD5": "af9d9438ef310e24e4075a184b1e0f03",
                         "path": "shaderpacks/MakeUp-UltraFast-9.6.zip",
                         "url": "https://cdn.modrinth.com/data/izsIPI7a/versions/t4YRxQug/MakeUp-UltraFast-9.6.zip"
-                    }
-                },
-                {
-                    "id": "shaderpack:Ray_0_1_0a0_c7fa099_nightly_zip",
-                    "name": "Ray",
-                    "type": "File",
-                    "artifact": {
-                        "size": 12974492,
-                        "MD5": "0b1aca07d0745eea58a6506b6e63f71a",
-                        "path": "shaderpacks/Ray-0.1.0a0-c7fa099-nightly.zip",
-                        "url": "https://hachimitsuki.github.io/hachicrauncher-distro/repo/create/shaderpacks/Ray-0.1.0a0-c7fa099-nightly.zip"
                     }
                 },
                 {
