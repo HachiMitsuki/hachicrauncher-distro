@@ -21,6 +21,11 @@
 //   nightly タグは push のたびに中身が置き換わるため、ファイル名ごとピン留めする。
 //   公式: https://github.com/kuwacom/ray  ライセンスは zip 内の Ray Shader License 1.0（クレジットと公式リンクを添えて pack へ同梱してよい）。
 //   クライアントだけで、サーバー(CT106)の mods は変えない。
+// 2026-11-14 1.4.0: クライアントだけの MOD を足す。MaFgLib 0.4.3 と、それを前提にする
+//   Forgematica 0.4.3・Tweakerge 0.4.3・BoccHUD 0.4.1、それに Catalogue 1.11.2。
+//   Forgematica は 0.4.2 が落ちるので 0.4.3 に固定。Catalogue は CurseForge（Modrinth に無い）で、
+//   必須の前提は無し（Framework は不要。Configured は任意なので配らない）。
+//   どれもクライアントだけで、サーバー(CT106)の mods は変えない。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -75,7 +80,12 @@ const MOD_VERSIONS = [
     'wsXjRa7l',   // Copycats+ aeronautics weight 1.1.1（Copycats+ のブロックに飛行船用の重さを付ける）
     'kVi3TESX',   // Create: Numismatics 1.1.0（お金と店）
     'nC19ZMKK',   // Create: Blocks & Bogies 1.0.8（列車の台車）
-    'vJ49zRJl'    // Create: Escalated 1.3.2（エスカレーター）
+    'vJ49zRJl',   // Create: Escalated 1.3.2（エスカレーター）
+    // 1.4.0（2026-11-14）ここから下はクライアントだけ。サーバーには入れない
+    'CgDQ0u0Q',   // MaFgLib 0.4.3+mc1.21.1（malilib の非公式移植。下の 3 つの前提）
+    'PFUOWUDF',   // Forgematica 0.4.3+mc1.21.1（Litematica の非公式移植。0.4.2 は落ちるので使わない）
+    '701i2Xre',   // Tweakerge 0.4.3+mc1.21.1（Tweakeroo の非公式移植）
+    'tOP74nwE'    // BoccHUD 0.4.1+mc1.21.1（MiniHUD の非公式移植）
 ]
 // 影パック（shaderpacks/ に置く。MOD ではないので jar の ID は読まない）。Modrinth の配布元を直接参照する（MOD と同じ）
 const SHADER_VERSIONS = [
@@ -89,6 +99,15 @@ const HOSTED_SHADER_PACKS = [
         name: 'Ray',
         sha256: '1423425e7c9a27b8258cce3bf85b3c324f47be4df8345196bd1c66030918c263',
         source: 'https://github.com/kuwacom/ray/releases/download/nightly/Ray-0.1.0a0-c7fa099-nightly.zip'
+    }
+]
+// Modrinth に無い MOD。CurseForge 公式の CurseMaven URL を直接参照する（本体は自前ホストしない）
+const CURSE_MODS = [
+    {
+        filename: 'catalogue-neoforge-1.21.1-1.11.2.jar',
+        name: 'Catalogue',
+        sha1: '6d67f855c20bc6392763cfb22e1152da4e8015b4',
+        url: 'https://www.cursemaven.com/curse/maven/catalogue-459701/6926815/catalogue-459701-6926815.jar'
     }
 ]
 const OLD_SAME_ADDR = ['hachi-neoforge-1.21.1', 'hachi-pixelmon-1.21.1']
@@ -147,6 +166,11 @@ const md5 = b => crypto.createHash('md5').update(b).digest('hex')
 const sha1 = b => crypto.createHash('sha1').update(b).digest('hex')
 const sha256 = b => crypto.createHash('sha256').update(b).digest('hex')
 
+function pickRemoteFile(v){
+    const files=(v.files||[]).filter(f=>!/(-sources|\.src)\.jar$/i.test(f.filename||''))
+    if(!files.length) throw new Error(`no non-sources file for version ${v.id}`)
+    return files.find(x=>x.primary)||files[0]
+}
 async function dl(url){ const r=await fetch(url,{headers:{'User-Agent':CFG.UA}}); if(!r.ok) throw new Error(`DL ${r.status} ${url}`); return Buffer.from(await r.arrayBuffer()) }
 async function getJson(url){ const r=await fetch(url,{headers:{'User-Agent':CFG.UA}}); if(!r.ok) throw new Error(`JSON ${r.status} ${url}`); return r.json() }
 function save(rel,buf){ const d=path.join(REPO,rel); fs.mkdirSync(path.dirname(d),{recursive:true}); fs.writeFileSync(d,buf); return buf }
@@ -221,15 +245,23 @@ async function main(){
     const modMods=[]
     const distributedModIds=new Set()
     for(const vid of MOD_VERSIONS){ const v=vers.find(x=>x.id===vid)
-        const file=v.files.find(x=>x.primary)||v.files[0]
+        const file=pickRemoteFile(v)
         const buf=await dl(file.url)
         if(sha1(buf)!==file.hashes.sha1) throw new Error(`sha1 mismatch ${file.filename}`)
         for(const id of jarModIds(buf)) distributedModIds.add(id)
         modMods.push({ id:`mod:${file.filename.replace(/[^a-z0-9]/gi,'_')}`, name:title[v.project_id]||file.filename, type:'File',
             artifact:{ size:buf.length, MD5:md5(buf), path:`mods/${file.filename}`, url:file.url } })
         console.log('mod ok:', file.filename) }
+    for (const pack of CURSE_MODS) {
+        const buf = await dl(pack.url)
+        if (pack.sha1 && sha1(buf) !== pack.sha1) throw new Error(`sha1 mismatch ${pack.filename}`)
+        for (const id of jarModIds(buf)) distributedModIds.add(id)
+        modMods.push({ id:`mod:${pack.filename.replace(/[^a-z0-9]/gi,'_')}`, name:pack.name, type:'File',
+            artifact:{ size:buf.length, MD5:md5(buf), path:`mods/${pack.filename}`, url:pack.url } })
+        console.log('curse mod ok:', pack.filename)
+    }
     for(const vid of SHADER_VERSIONS){ const v=vers.find(x=>x.id===vid)
-        const file=v.files.find(x=>x.primary)||v.files[0]
+        const file=pickRemoteFile(v)
         const buf=await dl(file.url)
         if(sha1(buf)!==file.hashes.sha1) throw new Error(`sha1 mismatch ${file.filename}`)
         modMods.push({ id:`shaderpack:${file.filename.replace(/[^a-z0-9]/gi,'_')}`, name:title[v.project_id]||file.filename, type:'File',
@@ -276,7 +308,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.3.1',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.0',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
