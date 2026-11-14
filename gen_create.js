@@ -15,6 +15,12 @@
 // 2026-11-09 1.3.0: Create のアドオン 11 個（Copycats+・Encased・Bits 'n' Bobs と前提 2 つ・Propulsion・Aeroworks・
 //   Copycats+ の重さ対応・Numismatics・Blocks & Bogies・Escalated）を足した（本人の判断シート）。ブロックを足すので
 //   サーバー(CT106)の mods にも同じ版を入れる
+// 2026-11-14 1.3.1: くわ（kuwacom）の撮影用シェーダー「Ray」alpha（0.1.0a0 / nightly c7fa099）を配る。
+//   Iris 向けの zip で、MOD ではない。対応は Minecraft 1.21.x–26.x と Iris 1.8+（配っている 1.8.14-beta.1 で足りる）。
+//   Modrinth には無いので、GitHub で公開されたその版を repo/create/shaderpacks/ に置いて GitHub Pages から配る。
+//   nightly タグは push のたびに中身が置き換わるため、ファイル名ごとピン留めする。
+//   公式: https://github.com/kuwacom/ray  ライセンスは zip 内の Ray Shader License 1.0（クレジットと公式リンクを添えて pack へ同梱してよい）。
+//   クライアントだけで、サーバー(CT106)の mods は変えない。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -76,6 +82,15 @@ const SHADER_VERSIONS = [
     'Bqen1mJX',   // Complementary Shaders - Reimagined r5.9.3（きれいな方）
     't4YRxQug'    // MakeUp - Ultra Fast 9.6（軽い方。弱い PC 向け）
 ]
+// Modrinth に無い影パック。repo/create/shaderpacks/ に置いて GitHub Pages から配る
+const HOSTED_SHADER_PACKS = [
+    {
+        filename: 'Ray-0.1.0a0-c7fa099-nightly.zip',
+        name: 'Ray',
+        sha256: '1423425e7c9a27b8258cce3bf85b3c324f47be4df8345196bd1c66030918c263',
+        source: 'https://github.com/kuwacom/ray/releases/download/nightly/Ray-0.1.0a0-c7fa099-nightly.zip'
+    }
+]
 const OLD_SAME_ADDR = ['hachi-neoforge-1.21.1', 'hachi-pixelmon-1.21.1']
 const STOPPED_SUFFIX = '（停止中）'
 
@@ -130,6 +145,7 @@ function jarModIds(buf){
 const REPO = path.join(CFG.DISTRO_DIR, 'repo')
 const md5 = b => crypto.createHash('md5').update(b).digest('hex')
 const sha1 = b => crypto.createHash('sha1').update(b).digest('hex')
+const sha256 = b => crypto.createHash('sha256').update(b).digest('hex')
 
 async function dl(url){ const r=await fetch(url,{headers:{'User-Agent':CFG.UA}}); if(!r.ok) throw new Error(`DL ${r.status} ${url}`); return Buffer.from(await r.arrayBuffer()) }
 async function getJson(url){ const r=await fetch(url,{headers:{'User-Agent':CFG.UA}}); if(!r.ok) throw new Error(`JSON ${r.status} ${url}`); return r.json() }
@@ -219,6 +235,16 @@ async function main(){
         modMods.push({ id:`shaderpack:${file.filename.replace(/[^a-z0-9]/gi,'_')}`, name:title[v.project_id]||file.filename, type:'File',
             artifact:{ size:buf.length, MD5:md5(buf), path:`shaderpacks/${file.filename}`, url:file.url } })
         console.log('shaderpack ok:', file.filename) }
+    for (const pack of HOSTED_SHADER_PACKS) {
+        const destRel = `create/shaderpacks/${pack.filename}`
+        const destAbs = path.join(REPO, destRel)
+        const buf = fs.existsSync(destAbs) ? fs.readFileSync(destAbs) : await dl(pack.source)
+        if (pack.sha256 && sha256(buf) !== pack.sha256) throw new Error(`sha256 mismatch ${pack.filename}`)
+        save(destRel, buf)
+        modMods.push({ id:`shaderpack:${pack.filename.replace(/[^a-z0-9]/gi,'_')}`, name:pack.name, type:'File',
+            artifact:{ size:buf.length, MD5:md5(buf), path:`shaderpacks/${pack.filename}`, url:`${CFG.PAGES}/create/shaderpacks/${pack.filename}` } })
+        console.log('hosted shaderpack ok:', pack.filename)
+    }
     // 確かめ済みの MOD が配っている MOD と同じ ID だと、ランチャーが「外したMOD」へ移してしまうので止める
     const clash=CHECKED_USER_MODS.filter(c=>distributedModIds.has(c.modId))
     if(clash.length) throw new Error(`checked user mods already distributed: ${clash.map(c=>c.modId).join(',')}`)
@@ -250,7 +276,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.3.0',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.3.1',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
