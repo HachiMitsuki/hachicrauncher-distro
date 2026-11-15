@@ -34,6 +34,8 @@
 //   言語MOD（hachi-masa-ja）を配る。ゲームの言語が日本語なら、リソースパックを自分でオンにしなくても読まれる。
 //   訳は Mya 氏の「Mya's masady mods jp translation」1.1.0（LGPL-3.0。1.21.1 は lang/1.21.2）と、
 //   sakura-ryoko 系の日本語、および MiniHUD の不足分の補完。本体の jar は変えず、サーバー(CT106)の mods も変えない。
+// 2026-11-15 1.4.3: Torchmaster 21.1.13（メガトーチ。湧きを止めるトーチ）を足す。NeoForge 1.21.1 向けの最新で、
+//   必須の前提は NeoForge と Minecraft だけ（21.1.265 で足りる）。クライアントとサーバーの両方に入れる。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -89,6 +91,8 @@ const MOD_VERSIONS = [
     'kVi3TESX',   // Create: Numismatics 1.1.0（お金と店）
     'nC19ZMKK',   // Create: Blocks & Bogies 1.0.8（列車の台車）
     'vJ49zRJl',   // Create: Escalated 1.3.2（エスカレーター）
+    // 1.4.3（2026-11-15）クライアントとサーバーの両方。湧き防止のメガトーチ
+    'JmlakQNo',   // Torchmaster 21.1.13（メガトーチ。必須の前提は無し）
     // 1.4.0（2026-11-14）ここから下はクライアントだけ。サーバーには入れない
     'CgDQ0u0Q',   // MaFgLib 0.4.3+mc1.21.1（malilib の非公式移植。下の 3 つの前提）
     'PFUOWUDF',   // Forgematica 0.4.3+mc1.21.1（Litematica の非公式移植。0.4.2 は落ちるので使わない）
@@ -330,7 +334,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.2',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.3',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }

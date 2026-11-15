@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1220,6 +1220,17 @@
                     }
                 },
                 {
+                    "id": "mod:torchmaster_neoforge_1_21_1_21_1_13_jar",
+                    "name": "Torchmaster",
+                    "type": "File",
+                    "artifact": {
+                        "size": 161205,
+                        "MD5": "3c392552d26ddb99eb6edbec8a251ec8",
+                        "path": "mods/torchmaster-neoforge-1.21.1-21.1.13.jar",
+                        "url": "https://cdn.modrinth.com/data/Tl8ESrhX/versions/JmlakQNo/torchmaster-neoforge-1.21.1-21.1.13.jar"
+                    }
+                },
+                {
                     "id": "mod:mafglib_0_4_3_mc1_21_1_jar",
                     "name": "MaFgLib",
                     "type": "File",
@@ -1382,6 +1393,7 @@
                     "storagedrawers",
                     "struts",
                     "tenshilib",
+                    "torchmaster",
                     "tweakerge",
                     "tweakeroo",
                     "xaerominimap",
