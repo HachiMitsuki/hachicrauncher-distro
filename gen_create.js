@@ -36,6 +36,9 @@
 //   sakura-ryoko 系の日本語、および MiniHUD の不足分の補完。本体の jar は変えず、サーバー(CT106)の mods も変えない。
 // 2026-11-15 1.4.3: Torchmaster 21.1.13（メガトーチ。湧きを止めるトーチ）を足す。NeoForge 1.21.1 向けの最新で、
 //   必須の前提は NeoForge と Minecraft だけ（21.1.265 で足りる）。クライアントとサーバーの両方に入れる。
+// 2026-11-17 1.4.4: Rock'n Roller 0.4.0+mc1.21.1（Item Scroller の非公式移植）を足す。
+//   NeoForge 1.21.1 向けの最新の安定版（version id vsVKkDaQ）。前提は MaFgLib 0.4 以上で、
+//   配っている 0.4.3 で足りる。クライアントだけで、サーバー(CT106)の mods は変えない。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -94,10 +97,12 @@ const MOD_VERSIONS = [
     // 1.4.3（2026-11-15）クライアントとサーバーの両方。湧き防止のメガトーチ
     'JmlakQNo',   // Torchmaster 21.1.13（メガトーチ。必須の前提は無し）
     // 1.4.0（2026-11-14）ここから下はクライアントだけ。サーバーには入れない
-    'CgDQ0u0Q',   // MaFgLib 0.4.3+mc1.21.1（malilib の非公式移植。下の 3 つの前提）
+    'CgDQ0u0Q',   // MaFgLib 0.4.3+mc1.21.1（malilib の非公式移植。下の 4 つの前提）
     'PFUOWUDF',   // Forgematica 0.4.3+mc1.21.1（Litematica の非公式移植。0.4.2 は落ちるので使わない）
     '701i2Xre',   // Tweakerge 0.4.3+mc1.21.1（Tweakeroo の非公式移植）
-    'tOP74nwE'    // BoccHUD 0.4.1+mc1.21.1（MiniHUD の非公式移植）
+    'tOP74nwE',   // BoccHUD 0.4.1+mc1.21.1（MiniHUD の非公式移植）
+    // 1.4.4（2026-11-17）クライアントだけ。大量クラフトと一括移動・破棄
+    'vsVKkDaQ'    // Rock'n Roller 0.4.0+mc1.21.1（Item Scroller の非公式移植。前提は上の MaFgLib 0.4.3）
 ]
 // 影パック（shaderpacks/ に置く。MOD ではないので jar の ID は読まない）。Modrinth の配布元を直接参照する（MOD と同じ）
 const SHADER_VERSIONS = [
@@ -334,7 +339,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.3',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.4',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
