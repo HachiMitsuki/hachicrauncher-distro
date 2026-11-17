@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1231,6 +1231,17 @@
                     }
                 },
                 {
+                    "id": "mod:create_integrated_farming_1_4_3_jar",
+                    "name": "Create: Integrated Farming",
+                    "type": "File",
+                    "artifact": {
+                        "size": 865429,
+                        "MD5": "819497f906035795a5e2d4fe71f46081",
+                        "path": "mods/create-integrated-farming-1.4.3.jar",
+                        "url": "https://cdn.modrinth.com/data/9k1pAsfR/versions/EWfVwbHy/create-integrated-farming-1.4.3.jar"
+                    }
+                },
+                {
                     "id": "mod:mafglib_0_4_3_mc1_21_1_jar",
                     "name": "MaFgLib",
                     "type": "File",
@@ -1359,6 +1370,7 @@
                     "create_connected",
                     "create_dragons_plus",
                     "create_enchantment_industry",
+                    "create_integrated_farming",
                     "create_jetpack",
                     "create_mechanical_extruder",
                     "create_new_age",
