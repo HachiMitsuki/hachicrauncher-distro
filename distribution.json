@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1022,17 +1022,6 @@
                     }
                 },
                 {
-                    "id": "mod:improvedmobs_1_21_1_1_16_0_b_neoforge_jar",
-                    "name": "Improved Mobs",
-                    "type": "File",
-                    "artifact": {
-                        "size": 409406,
-                        "MD5": "d510914cf511a848dbf18763a8d1d5a2",
-                        "path": "mods/improvedmobs-1.21.1-1.16.0.b-neoforge.jar",
-                        "url": "https://cdn.modrinth.com/data/23MovWyi/versions/bgyn3PYl/improvedmobs-1.21.1-1.16.0.b-neoforge.jar"
-                    }
-                },
-                {
                     "id": "mod:tenshilib_1_21_1_2_3_1_neoforge_jar",
                     "name": "TenshiLib",
                     "type": "File",
@@ -1391,7 +1380,6 @@
                     "forgematica",
                     "hachi_masa_ja",
                     "immediatelyfast",
-                    "improvedmobs",
                     "interiors",
                     "inventoryprofilesnext",
                     "iris",

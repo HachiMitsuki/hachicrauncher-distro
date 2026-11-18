@@ -43,6 +43,9 @@
 //   NeoForge 1.21.1 向けの最新の安定版（version id EWfVwbHy）。必須の前提は Create 6.0.10 と
 //   Create: Dragons Plus 1.11.9 以上で、配っている版で足りる。Farmer's Delight は任意で、
 //   配っている 1.21.1-1.3.4 で足りる。クライアントとサーバーの両方に入れる。
+// 2026-11-18 1.4.6: Improved Mobs 1.21.1-1.16.0.b を外す。プレイヤーごとの難易度が時間とともに上がり、
+//   mob の体力が上がるため。TenshiLib は前提として入っているが残す。Dungeon Difficulty は残す。
+//   クライアントとサーバーの両方から外す。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -75,7 +78,6 @@ const MOD_VERSIONS = [
     'ZDZENbHH', 'x7kQWVju', 'DDUrRVCA', 'v5qtqRQi', 'LuFhm4eU',
     'uMOpc5uV', 'eieYbWYb', 'EJzmEPZV', 'dR2F5bfH',
     'px0CCB06',   // Storage Drawers 1.21.1-13.11.4
-    'bgyn3PYl',   // Improved Mobs 1.21.1-1.16.0.b（クライアントでは難易度メーターの表示用）
     'fcNC0Ok0',   // TenshiLib 1.21.1-2.3.1（Improved Mobs の前提）
     'uwoMCnrI',   // Dungeon Difficulty 3.9.2+1.21.1-neoforge
     // 1.2.0（2026-11-08）ここから下はクライアントだけ。サーバーには入れない
@@ -345,7 +347,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.5',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.6',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
