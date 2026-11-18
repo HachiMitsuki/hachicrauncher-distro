@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1231,6 +1231,17 @@
                     }
                 },
                 {
+                    "id": "mod:voicechat_neoforge_1_21_1_2_6_22_jar",
+                    "name": "Simple Voice Chat",
+                    "type": "File",
+                    "artifact": {
+                        "size": 4918442,
+                        "MD5": "f2c1f0eb15d2fb2a8cf8a0040282df51",
+                        "path": "mods/voicechat-neoforge-1.21.1-2.6.22.jar",
+                        "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/2s7zUspF/voicechat-neoforge-1.21.1-2.6.22.jar"
+                    }
+                },
+                {
                     "id": "mod:mafglib_0_4_3_mc1_21_1_jar",
                     "name": "MaFgLib",
                     "type": "File",
@@ -1410,6 +1421,8 @@
                     "torchmaster",
                     "tweakerge",
                     "tweakeroo",
+                    "voicechat",
+                    "voicechat_api",
                     "xaerominimap",
                     "xaeroworldmap",
                     "yungsapi"

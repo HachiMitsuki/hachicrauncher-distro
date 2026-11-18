@@ -46,6 +46,9 @@
 // 2026-11-18 1.4.6: Improved Mobs 1.21.1-1.16.0.b を外す。プレイヤーごとの難易度が時間とともに上がり、
 //   mob の体力が上がるため。TenshiLib は前提として入っているが残す。Dungeon Difficulty は残す。
 //   クライアントとサーバーの両方から外す。
+// 2026-11-18 1.4.7: Simple Voice Chat 1.21.1-2.6.22（近距離ボイスチャット）を足す。
+//   NeoForge 1.21.1 向けの最新の安定版（version id 2s7zUspF）。必須の前提は無し。
+//   Cloth Config API は任意なので配らない。クライアントとサーバーの両方に入れる。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -104,6 +107,8 @@ const MOD_VERSIONS = [
     'JmlakQNo',   // Torchmaster 21.1.13（メガトーチ。必須の前提は無し）
     // 1.4.5（2026-11-17）クライアントとサーバーの両方。Create の自動釣り・農業
     'EWfVwbHy',   // Create: Integrated Farming 1.4.3（前提は Create 6.0.10 と Dragons Plus 1.11.9）
+    // 1.4.7（2026-11-18）クライアントとサーバーの両方。近距離ボイスチャット
+    '2s7zUspF',   // Simple Voice Chat 1.21.1-2.6.22（必須の前提は無し。Cloth Config は任意）
     // 1.4.0（2026-11-14）ここから下はクライアントだけ。サーバーには入れない
     'CgDQ0u0Q',   // MaFgLib 0.4.3+mc1.21.1（malilib の非公式移植。下の 4 つの前提）
     'PFUOWUDF',   // Forgematica 0.4.3+mc1.21.1（Litematica の非公式移植。0.4.2 は落ちるので使わない）
@@ -347,7 +352,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.6',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.7',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
