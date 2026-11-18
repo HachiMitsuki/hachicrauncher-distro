@@ -49,6 +49,9 @@
 // 2026-11-18 1.4.7: Simple Voice Chat 1.21.1-2.6.22（近距離ボイスチャット）を足す。
 //   NeoForge 1.21.1 向けの最新の安定版（version id 2s7zUspF）。必須の前提は無し。
 //   Cloth Config API は任意なので配らない。クライアントとサーバーの両方に入れる。
+// 2026-11-18 1.4.8: Mars's Enchanted Book Textures 1.21.1-neoforge-1（エンチャント本の見た目を種類ごとに変える）を足す。
+//   NeoForge 1.21.1 向けの版（version id gAtwIMpm）。必須の前提は Deimos（1.21.1-neoforge-2.8 / N3YOb3xt）。
+//   どちらも MIT。クライアントだけで、サーバー(CT106)の mods は変えない。リソースパックの操作は不要。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -115,7 +118,10 @@ const MOD_VERSIONS = [
     '701i2Xre',   // Tweakerge 0.4.3+mc1.21.1（Tweakeroo の非公式移植）
     'tOP74nwE',   // BoccHUD 0.4.1+mc1.21.1（MiniHUD の非公式移植）
     // 1.4.4（2026-11-17）クライアントだけ。大量クラフトと一括移動・破棄
-    'vsVKkDaQ'    // Rock'n Roller 0.4.0+mc1.21.1（Item Scroller の非公式移植。前提は上の MaFgLib 0.4.3）
+    'vsVKkDaQ',   // Rock'n Roller 0.4.0+mc1.21.1（Item Scroller の非公式移植。前提は上の MaFgLib 0.4.3）
+    // 1.4.8（2026-11-18）クライアントだけ。エンチャント本の見た目を種類ごとに変える
+    'N3YOb3xt',   // Deimos 1.21.1-neoforge-2.8（下の Enchanted Books from Mars の前提。設定ライブラリ）
+    'gAtwIMpm'    // Enchanted Books from Mars 1.21.1-neoforge-1（エンチャント種類ごとの本テクスチャ。前提は上の Deimos）
 ]
 // 影パック（shaderpacks/ に置く。MOD ではないので jar の ID は読まない）。Modrinth の配布元を直接参照する（MOD と同じ）
 const SHADER_VERSIONS = [
@@ -352,7 +358,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.7',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.8',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }

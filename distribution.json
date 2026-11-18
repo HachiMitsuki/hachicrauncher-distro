@@ -12,7 +12,7 @@
             "name": "Create鯖",
             "description": "Create 6.0.10 / NeoForge 21.1.265 / MC 1.21.1",
             "icon": "",
-            "version": "1.4.7",
+            "version": "1.4.8",
             "address": "172.237.20.45:25565",
             "minecraftVersion": "1.21.1",
             "discord": {
@@ -1297,6 +1297,28 @@
                     }
                 },
                 {
+                    "id": "mod:deimos_1_21_1_neoforge_2_8_jar",
+                    "name": "Deimos",
+                    "type": "File",
+                    "artifact": {
+                        "size": 49587,
+                        "MD5": "6968556fdd8896865698f51bdce7b8a1",
+                        "path": "mods/deimos-1.21.1-neoforge-2.8.jar",
+                        "url": "https://cdn.modrinth.com/data/WQaxNzFg/versions/N3YOb3xt/deimos-1.21.1-neoforge-2.8.jar"
+                    }
+                },
+                {
+                    "id": "mod:ebooks_1_21_1_neoforge_1_jar",
+                    "name": "Mars's Enchanted Book Textures",
+                    "type": "File",
+                    "artifact": {
+                        "size": 49972,
+                        "MD5": "ba281d8c64652d1f106bca4ba238765c",
+                        "path": "mods/ebooks-1.21.1-neoforge-1.jar",
+                        "url": "https://cdn.modrinth.com/data/9I1J4pNt/versions/gAtwIMpm/ebooks-1.21.1-neoforge-1.jar"
+                    }
+                },
+                {
                     "id": "mod:catalogue_neoforge_1_21_1_1_11_2_jar",
                     "name": "Catalogue",
                     "type": "File",
@@ -1382,8 +1404,10 @@
                     "createcasing",
                     "createdeco",
                     "createpropulsion",
+                    "deimos",
                     "dndecor",
                     "dungeon_difficulty",
+                    "ebooks",
                     "entityculling",
                     "escalated",
                     "farmersdelight",
