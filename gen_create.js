@@ -52,6 +52,16 @@
 // 2026-11-18 1.4.8: Mars's Enchanted Book Textures 1.21.1-neoforge-1（エンチャント本の見た目を種類ごとに変える）を足す。
 //   NeoForge 1.21.1 向けの版（version id gAtwIMpm）。必須の前提は Deimos（1.21.1-neoforge-2.8 / N3YOb3xt）。
 //   どちらも MIT。クライアントだけで、サーバー(CT106)の mods は変えない。リソースパックの操作は不要。
+// 2026-11-19 1.4.9: くわ（kuwacom）の撮影用シェーダー「Ray」alpha（0.1.0a0 / nightly 4a1d3f9）を再び配る。
+//   1.4.1 で外した理由（colortex16 以降が必要で、配っている Iris 1.8.14-beta.1 では読めない）は、
+//   公式が 2026-11-16 に colortex を全環境で 16 枚に統一し、Iris 1.7 以降へ対応したことで解消した
+//   （kuwacom/ray#8 は閉じ済み。この zip に colortex16 以降の参照は無い）。
+//   対応は Minecraft 1.20.1–26.x と Iris 1.7 以降。1.21.x の Iris 1.8〜1.10 は公式がコンパイル検証のみ。
+//   配っている Iris 1.8.14-beta.1 で足りる。既定の影は切り替えない（iris.properties は配らない）。
+//   Modrinth には無いので、GitHub で公開されたその版を repo/create/shaderpacks/ に置いて GitHub Pages から配る。
+//   nightly タグは push のたびに中身が置き換わるため、ファイル名ごとピン留めする。
+//   公式: https://github.com/kuwacom/ray  ライセンスは zip 内の Ray Shader License 1.0（クレジットと公式リンクを添えて pack へ同梱してよい）。
+//   クライアントだけで、サーバー(CT106)の mods は変えない。
 //
 // 使い方: node gen_create.js
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), cp = require('child_process')
@@ -130,7 +140,13 @@ const SHADER_VERSIONS = [
 ]
 // Modrinth に無い影パック。repo/create/shaderpacks/ に置いて GitHub Pages から配る
 const HOSTED_SHADER_PACKS = [
-    // 1.4.1: Ray を外した（Iris 1.8.x は colortex が 16 個までで、Ray は 16 以降を使う）
+    // 1.4.9: Ray を戻す（1.4.1 で外した colortex16 以降の問題は、公式が 2026-11-16 に colortex を 16 枚へ統一して解消。Issue #8 は閉じ済み）
+    {
+        filename: 'Ray-0.1.0a0-4a1d3f9-nightly.zip',
+        name: 'Ray',
+        sha256: 'f74fa80ba8759702dc4836b6f6ff01f245fdbb3610f49322d1de8fe9b25f4a81',
+        source: 'https://github.com/kuwacom/ray/releases/download/nightly/Ray-0.1.0a0-4a1d3f9-nightly.zip'
+    }
 ]
 // Modrinth に無いクライアント専用MOD。repo/create/mods/ に置いて GitHub Pages から配る
 const HOSTED_CLIENT_MODS = [
@@ -358,7 +374,7 @@ async function main(){
         s.mainServer=false; s.autoconnect=false
         if(!s.name.endsWith(STOPPED_SUFFIX)) s.name=s.name+STOPPED_SUFFIX
     }
-    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.8',
+    const entry={ id:CFG.SERVER_ID, name:CFG.SERVER_NAME, description:`Create 6.0.10 / NeoForge ${NEO} / MC ${CFG.MC_VER}`, icon:'', version:'1.4.9',
         address:CFG.SERVER_ADDR, minecraftVersion:CFG.MC_VER, discord:{shortId:CFG.SERVER_NAME,largeImageText:CFG.SERVER_NAME,largeImageKey:CFG.SERVER_ID},
         mainServer:true, autoconnect:true, modules:[forgeHosted, ...modMods],
         hachiUserMods:{ distributedModIds:[...distributedModIds].sort(), checked:CHECKED_USER_MODS, suspicious:SUSPICIOUS_USER_MODS, report:REPORT_SUSPICIOUS_MODS } }
